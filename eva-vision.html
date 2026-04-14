@@ -1,0 +1,1365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>e-conomic · Product & Design Vision 2026–2029</title>
+<style>
+  :root{
+    --bg:#F7F4EE;
+    --bg-2:#EFEBE2;
+    --ink:#1B1F36;
+    --ink-2:#2A2F4C;
+    --card:#ffffff;
+    --card-ink:#121530;
+    --accent:#F5A524;
+    --accent-2:#E8871E;
+    --muted:#6B6F84;
+    --line:rgba(27,31,54,.08);
+    --peach:#FEEFDD;
+    --mint:#E3F4E8;
+    --lavender:#EEE8FB;
+    --blue:#E4EDFB;
+    --red:#FBE6E6;
+    --chip:rgba(245,165,36,.14);
+    --shadow: 0 1px 2px rgba(18,21,48,.04), 0 8px 24px rgba(18,21,48,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;height:100%;background:var(--bg);color:var(--ink);font-family:"Inter","SF Pro Text","Segoe UI",system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+  body{overflow:hidden}
+  .stage{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:40px 56px 72px}
+  .slide{
+    width:min(1280px,100%);
+    height:min(760px,calc(100% - 0px));
+    background:var(--card);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    padding:48px 56px;
+    display:none;
+    flex-direction:column;
+    position:relative;
+    overflow:hidden;
+  }
+  .slide.active{display:flex;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .brand{position:absolute;top:24px;right:36px;height:22px;display:inline-flex;align-items:center}
+  .brand svg{height:100%;width:auto;display:block}
+  .pill{display:inline-flex;align-self:flex-start;align-items:center;gap:6px;background:var(--chip);color:var(--accent-2);font-weight:600;font-size:10.5px;letter-spacing:.06em;padding:5px 10px;border-radius:999px;text-transform:uppercase;width:fit-content}
+  .pill::before{content:"";width:6px;height:6px;border-radius:999px;background:var(--accent)}
+  h1.title{font-size:40px;line-height:1.08;letter-spacing:-.02em;margin:10px 0 8px;font-weight:700;color:var(--ink)}
+  h2.title{font-size:30px;line-height:1.12;letter-spacing:-.02em;margin:10px 0 6px;font-weight:700;color:var(--ink)}
+  .subtitle{color:var(--muted);font-size:14.5px;margin:0 0 20px;max-width:820px;line-height:1.5}
+  .slide-num{position:absolute;bottom:24px;right:36px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .content{flex:1;display:flex;flex-direction:column;gap:18px;min-height:0;overflow-y:auto}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:22px;flex:1;min-height:0}
+  .three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;flex:1;min-height:0}
+  .four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .card{background:#FDFBF6;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;min-height:0}
+  .card.dark{background:var(--card-ink);color:#fff;border:none}
+  .card.dark .label{color:var(--accent)}
+  .card.accent{background:var(--peach);border-color:transparent}
+  .card.mint{background:var(--mint);border-color:transparent}
+  .card.lav{background:var(--lavender);border-color:transparent}
+  .card.blue{background:var(--blue);border-color:transparent}
+  .card.red{background:var(--red);border-color:transparent}
+  .card h3{margin:0;font-size:16px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+  .card.dark h3{color:#fff}
+  .card p{margin:0;font-size:13px;line-height:1.55;color:var(--ink-2)}
+  .card.dark p{color:#D7DAEB}
+  .label{font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--accent-2);text-transform:uppercase;display:flex;align-items:center;gap:8px}
+  .label::before{content:"⚡";font-size:11px}
+  .kicker{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;margin-bottom:6px}
+  ul.tight{margin:0;padding-left:18px}
+  ul.tight li{margin:3px 0;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+  .big-quote{font-size:22px;line-height:1.3;font-weight:600;letter-spacing:-.01em;color:var(--ink);max-width:980px}
+  .big-quote .hl{color:var(--accent-2)}
+
+  /* Context / Why this vision slide */
+  .context-slide{padding:48px 56px}
+  .context-layout{display:flex;gap:36px;flex:1;min-height:0;align-items:stretch}
+  .context-left{flex:1.1;display:flex;flex-direction:column;gap:16px;justify-content:center}
+  .context-body{font-size:15px;line-height:1.65;color:var(--ink-2);margin:0;max-width:520px}
+  .context-quote{font-size:17px;line-height:1.4;font-weight:600;color:var(--ink);border-left:3px solid var(--accent);padding-left:16px;margin-top:8px}
+  .context-quote .hl{color:var(--accent-2)}
+  .context-right{flex:0 0 380px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+  .context-card{background:#FDFBF6;border:1px solid var(--line);border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:6px}
+  .context-card.dark{background:var(--card-ink);border:none}
+  .context-card.dark p{color:#CFD2E4}
+  .context-num{font-size:32px;font-weight:800;letter-spacing:-.02em;color:rgba(18,21,48,.08);line-height:1}
+  .context-card h4{margin:0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.25}
+  .context-card.dark h4{color:#fff}
+  .context-card p{margin:0;font-size:12.5px;line-height:1.55;color:var(--ink-2)}
+  .byline{font-size:13px;color:var(--muted);margin-top:10px}
+  .num-badge{width:28px;height:28px;border-radius:8px;background:rgba(245,165,36,.16);color:var(--accent-2);display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;margin-right:10px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;flex:1;min-height:0}
+  .hero-left{display:flex;flex-direction:column;justify-content:center;gap:18px}
+  .hero-right{background:var(--card-ink);border-radius:18px;padding:28px;color:#fff;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+  .hero-right::before{content:"";position:absolute;inset:auto -60px -80px auto;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(245,165,36,.35),transparent 60%)}
+  .hero-right h3{font-size:18px;margin:0 0 8px;color:#fff;font-weight:700;position:relative}
+  .hero-right p{color:#D7DAEB;line-height:1.55;margin:0;position:relative;font-size:13px}
+  .track-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .track-head .emoji{font-size:22px}
+  .track-head h3{margin:0;font-size:18px;font-weight:700}
+  .divider{height:1px;background:var(--line);margin:10px 0}
+  .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;flex:1;min-height:0}
+  .tl-card{background:#FDFBF6;border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;min-height:0;position:relative}
+  .tl-card:nth-child(5){background:var(--card-ink);color:#fff;border:none}
+  .tl-card:nth-child(5) h4, .tl-card:nth-child(5) p{color:#fff !important}
+  .tl-year{font-size:11px;font-weight:700;color:var(--accent-2);letter-spacing:.12em;text-transform:uppercase}
+  .tl-card:nth-child(5) .tl-year{color:var(--accent)}
+  .tl-card h4{margin:0;font-size:13.5px;line-height:1.25;font-weight:700;color:var(--ink)}
+  .tl-card p{margin:0;font-size:12px;line-height:1.5;color:var(--ink-2)}
+  .tl-bar{height:6px;border-radius:4px;background:linear-gradient(90deg,rgba(245,165,36,.25),rgba(245,165,36,1) 60%,rgba(232,135,30,1));margin:8px 0 14px}
+  .impact{font-size:11.5px;color:var(--ink-2);background:var(--peach);padding:9px 12px;border-radius:10px;font-weight:500}
+  .impact b{color:var(--accent-2);font-weight:700;letter-spacing:.08em;font-size:11px;text-transform:uppercase;margin-right:8px}
+
+  /* Shared foundation box */
+  .foundation-box{flex:1;background:var(--peach);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
+  .foundation-head{display:flex;align-items:center;gap:12px}
+  .foundation-icon{font-size:22px}
+  .foundation-title{font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .foundation-sub{font-size:12px;color:var(--ink-2);margin-top:1px}
+  .foundation-items{display:flex;gap:8px;flex-wrap:wrap}
+  .foundation-item{flex:1;min-width:140px;background:rgba(255,255,255,.6);border-radius:10px;padding:10px 12px}
+  .foundation-item b{display:block;font-size:12px;font-weight:700;color:var(--accent-2);margin-bottom:2px}
+  .foundation-item span{font-size:11px;line-height:1.45;color:var(--ink-2)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+  .chip{font-size:12px;font-weight:500;color:var(--ink-2);background:rgba(27,31,54,.05);padding:4px 10px;border-radius:999px}
+  .chip.orange{background:rgba(245,165,36,.14);color:var(--accent-2)}
+  .chip.mint{background:rgba(52,168,83,.12);color:#2F7B48}
+  .chip.lav{background:rgba(123,97,255,.14);color:#5A43C4}
+  .metric-big{font-size:28px;font-weight:700;letter-spacing:-.02em;color:var(--ink);line-height:1}
+  .metric-label{font-size:12px;color:var(--muted);margin-top:4px}
+  .ao-seg{background:#FDFBF6;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:6px}
+  .ao-seg h4{margin:0;font-size:14px;font-weight:700;color:var(--ink)}
+  .ao-seg p{margin:0;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+  .seg-tags{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 2px}
+  .seg-tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:6px;align-self:flex-start}
+  .seg-tag.a{background:rgba(232,135,30,.14);color:var(--accent-2)}
+  .seg-tag.b{background:rgba(52,120,200,.14);color:#2E5FA0}
+  .seg-tag.c{background:rgba(127,127,143,.14);color:#4E5267}
+
+  /* Bottom nav */
+  .nav{
+    position:fixed;left:0;right:0;bottom:0;height:56px;
+    background:rgba(247,244,238,.92);backdrop-filter:blur(12px);
+    border-top:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;padding:0 24px;gap:12px;z-index:40;
+  }
+  .nav .sections{display:flex;gap:6px;overflow-x:auto;padding:0 8px}
+  .nav .sections::-webkit-scrollbar{display:none}
+  .sec{
+    flex:0 0 auto;padding:8px 14px;border-radius:10px;font-size:12.5px;font-weight:500;
+    color:var(--muted);background:transparent;border:1px solid transparent;cursor:pointer;white-space:nowrap;
+    transition:all .15s ease;
+  }
+  .sec:hover{background:rgba(27,31,54,.04);color:var(--ink)}
+  .sec.active{background:var(--ink);color:#fff}
+  .sec .num{display:inline-block;margin-right:6px;opacity:.6;font-variant-numeric:tabular-nums}
+  .arrow{
+    width:40px;height:40px;border-radius:12px;border:1px solid var(--line);
+    background:rgba(255,255,255,.85);backdrop-filter:blur(8px);display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+    transition:all .15s ease;color:var(--ink);flex-shrink:0;
+  }
+  .arrow:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .arrow:disabled{opacity:.2;cursor:not-allowed}
+  .arrow svg{width:18px;height:18px}
+  .side-arrow{position:fixed;top:50%;transform:translateY(-50%);z-index:50;box-shadow:0 2px 12px rgba(18,21,48,.1)}
+  .side-arrow.left{left:14px}
+  .side-arrow.right{right:14px}
+  .progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:50}
+  .progress .bar{height:100%;background:var(--accent);width:0;transition:width .3s ease}
+
+  /* Cover */
+  .cover{
+    background:linear-gradient(135deg,#1B1F36 0%,#2A2F4C 60%,#3B3F66 100%);
+    color:#fff;position:relative;overflow:hidden;
+  }
+  .cover::before{content:"";position:absolute;top:-120px;right:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(245,165,36,.35),transparent 60%)}
+  .cover::after{content:"";position:absolute;bottom:-140px;left:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(123,97,255,.22),transparent 60%)}
+  .cover .inner{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:center;gap:24px;height:100%}
+  .cover h1{font-size:54px;line-height:1.04;font-weight:700;letter-spacing:-.025em;margin:0;max-width:900px}
+  .cover h1 .hl{color:var(--accent)}
+  .cover .sub{color:#CFD2E4;font-size:15px;margin-top:18px;max-width:680px;line-height:1.5}
+  .cover .meta{display:flex;gap:20px;color:#9DA2BD;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+  .cover .eva{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:7px 12px;border-radius:999px;font-size:11.5px;color:#E8EAF6;letter-spacing:.04em}
+  .cover .eva .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+
+  /* Principle list */
+  .princ-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;margin-top:6px}
+  .princ{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;line-height:1.4;color:var(--ink-2)}
+  .princ::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent);margin-top:7px;flex:0 0 5px}
+
+  /* Design system slide */
+  .ds-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1;min-height:0}
+  .ds-card{border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px;min-height:0;position:relative;overflow:hidden}
+  .ds-card.left{background:#FDF4E3;border:1px solid rgba(245,165,36,.25)}
+  .ds-card.right{background:var(--card-ink);color:#fff}
+  .ds-card .tag{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:6px;align-self:flex-start}
+  .ds-card.left .tag{background:rgba(245,165,36,.2);color:var(--accent-2)}
+  .ds-card.right .tag{background:rgba(245,165,36,.2);color:var(--accent)}
+  .ds-card h3{margin:0;font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.25}
+  .ds-card.right h3{color:#fff}
+  .ds-card .goal{font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+  .ds-card.right .goal{color:#CFD2E4}
+  .ds-card h5{margin:4px 0 0;font-size:11.5px;font-weight:700;color:var(--ink)}
+  .ds-card.right h5{color:#fff}
+  .ds-card ul{margin:0;padding-left:16px;color:var(--ink-2);font-size:12px;line-height:1.55}
+  .ds-card.right ul{color:#CFD2E4}
+  .ds-card .footer{margin-top:auto;font-size:11.5px;padding:9px 12px;border-radius:10px}
+  .ds-card.left .footer{background:rgba(245,165,36,.18);color:#7A4A10}
+  .ds-card.right .footer{background:rgba(255,255,255,.08);color:#F5A524}
+
+  /* Risks slide */
+  .risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .risk{background:#FDFBF6;border:1px solid var(--line);border-radius:12px;padding:16px}
+  .risk h4{margin:0 0 4px;font-size:12.5px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px}
+  .risk h4 .dot{width:7px;height:7px;border-radius:50%;background:#D94C4C}
+  .risk p{margin:0;font-size:11.5px;line-height:1.5;color:var(--ink-2)}
+
+  /* Shape evolution row */
+  .shape-row{display:flex;align-items:stretch;gap:0;flex:0 0 auto}
+  .shape-card{flex:1;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+  .shape-card.past{background:rgba(200,160,120,.08);border:1.5px solid rgba(160,120,80,.18)}
+  .shape-card.present{background:rgba(140,130,200,.1);border:1.5px solid rgba(120,110,180,.2)}
+  .shape-card.future{background:rgba(130,200,160,.08);border:1.5px solid rgba(100,180,140,.2)}
+  .shape-label{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .shape-card.past .shape-label{color:#8B6F47}
+  .shape-card.present .shape-label{color:#6B5DAA}
+  .shape-card.future .shape-label{color:#3D8B5E}
+  .shape-title{font-size:16px;font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-bottom:2px}
+  .shape-card p{margin:0;font-size:10.5px;line-height:1.5;color:var(--ink-2)}
+  .shape-arrow{display:flex;align-items:center;font-size:22px;color:var(--muted);padding:0 8px;font-weight:300}
+  .shape-visual{height:72px;display:flex;align-items:center;justify-content:center}
+
+  /* T-shape visual */
+  .shape-t{display:flex;flex-direction:column;align-items:center}
+  .t-horiz{background:rgba(200,160,120,.25);border-radius:4px;padding:4px 24px;font-size:9px;font-weight:600;color:#8B6F47;letter-spacing:.03em}
+  .t-vert{background:rgba(200,160,120,.18);border-radius:4px;padding:10px 8px;font-size:9px;font-weight:600;color:#8B6F47;writing-mode:vertical-rl;letter-spacing:.03em;margin-top:2px}
+
+  /* F-shape visual */
+  .shape-f{display:flex;align-items:stretch;gap:4px}
+  .f-bar{width:10px;background:rgba(140,130,200,.3);border-radius:4px;min-height:52px}
+  .f-skill{background:rgba(140,130,200,.15);border-radius:4px;padding:5px 14px;font-size:9px;font-weight:600;color:#6B5DAA;align-self:center;margin-left:-2px;letter-spacing:.03em}
+  .shape-f{flex-direction:column;align-items:flex-start;position:relative;padding-left:16px}
+  .shape-f .f-bar{position:absolute;left:0;top:0;bottom:0;width:10px}
+  .shape-f .f-skill{margin:2px 0}
+
+  /* E-shape visual */
+  .shape-e{display:flex;flex-direction:column;align-items:flex-start;position:relative;padding-left:16px}
+  .e-bar{position:absolute;left:0;top:0;bottom:0;width:10px;background:rgba(130,200,160,.35);border-radius:4px}
+  .e-skill{background:rgba(130,200,160,.18);border-radius:4px;padding:4px 14px;font-size:9px;font-weight:600;color:#3D8B5E;margin:1px 0;letter-spacing:.03em}
+
+  /* Shape tags */
+  .shape-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+  .shape-tags span{background:rgba(18,21,48,.05);border-radius:4px;padding:3px 8px;font-size:9px;font-weight:600;color:var(--muted)}
+
+  /* Role cards */
+  .role-grid{display:flex;gap:8px}
+  .role-card{flex:1;background:#FDFBF6;border:1px solid var(--line);border-radius:10px;padding:10px 12px;display:flex;flex-direction:column;gap:2px}
+  .role-card.highlight{background:rgba(140,130,200,.08);border-color:rgba(120,110,180,.2)}
+  .role-icon{font-size:18px;margin-bottom:2px}
+  .role-card h4{margin:0;font-size:12px;font-weight:700;color:var(--ink)}
+  .role-card p{margin:0;font-size:10.5px;line-height:1.45;color:var(--ink-2)}
+
+  /* Upskilling timeline */
+  .upskill-timeline{display:flex;flex-direction:column;gap:6px;position:relative;padding-left:16px}
+  .upskill-timeline::before{content:"";position:absolute;left:4px;top:6px;bottom:6px;width:2px;background:linear-gradient(to bottom,var(--accent),#3D8B5E);border-radius:2px}
+  .upskill-phase{position:relative;background:#FDFBF6;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+  .upskill-phase::before{content:"";position:absolute;left:-14px;top:13px;width:8px;height:8px;border-radius:50%;background:var(--accent);border:2px solid var(--card)}
+  .upskill-when{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2)}
+  .upskill-what{font-size:13px;font-weight:700;color:var(--ink);margin:1px 0}
+  .upskill-phase p{margin:0;font-size:10.5px;line-height:1.45;color:var(--ink-2)}
+
+  /* Expanded shape cards (full slide) */
+  .shape-row.expanded{gap:0;flex:1;min-height:0}
+  .shape-card.expanded{padding:20px 22px;gap:6px}
+  .shape-card.expanded .shape-sub{font-size:12px;color:var(--muted);margin:0}
+  .shape-card.expanded .shape-desc{font-size:12.5px;line-height:1.55;color:var(--ink-2);margin:0}
+  .shape-visual.expanded{height:90px}
+
+  /* Dual shape rows (UX + PM) */
+  .dual-shape-headers{display:flex;gap:0;align-items:center;margin-bottom:4px}
+  .dual-shape-header-spacer{flex:0 0 64px}
+  .dual-shape-header{flex:1;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-align:center;padding:4px 0}
+  .past-h{color:#8B6F47}
+  .present-h{color:#6B5DAA}
+  .future-h{color:#3D8B5E}
+  .dual-shape-row{display:flex;align-items:stretch;gap:0;margin-bottom:8px}
+  .dual-shape-origin{flex:0 0 64px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--ink);writing-mode:horizontal-tb;text-align:center;padding-right:8px}
+  .ux-origin{color:var(--accent-2)}
+  .pm-origin{color:#2E5FA0}
+  .dual-shape-card{flex:1;border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+  .dual-shape-card.past-bg{background:rgba(200,160,120,.08);border:1px solid rgba(160,120,80,.14)}
+  .dual-shape-card.present-bg{background:rgba(140,130,200,.08);border:1px solid rgba(120,110,180,.14)}
+  .dual-shape-card.future-bg{background:rgba(130,200,160,.08);border:1px solid rgba(100,180,140,.14)}
+  .dual-shape-visual{height:58px;display:flex;align-items:center;justify-content:center}
+  .dual-shape-title{font-size:13px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .dual-shape-card p{margin:0;font-size:10.5px;line-height:1.5;color:var(--ink-2)}
+  .dual-shape-card .shape-tags{margin-top:auto;padding-top:2px}
+  .dual-shape-card .shape-tags span{font-size:8.5px}
+  .dual-shape-row .shape-arrow{flex:0 0 24px;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--muted);padding:0}
+  .dual-converge{text-align:center;font-size:12px;font-weight:600;color:var(--ink);background:rgba(140,130,200,.06);border-radius:8px;padding:8px 16px;margin-top:4px}
+
+  /* Shape diagram row (top of slide) */
+  .shape-diagram-row{display:flex;align-items:stretch;gap:0;margin-bottom:14px}
+  .shape-diagram{flex:1;border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center}
+  .shape-diagram.past-bg{background:rgba(200,160,120,.08);border:1px solid rgba(160,120,80,.14)}
+  .shape-diagram.present-bg{background:rgba(140,130,200,.08);border:1px solid rgba(120,110,180,.14)}
+  .shape-diagram.future-bg{background:rgba(130,200,160,.08);border:1px solid rgba(100,180,140,.14)}
+  .shape-diagram-label{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+  .shape-diagram-visual{height:62px;display:flex;align-items:center;justify-content:center}
+  .shape-diagram-desc{font-size:11px;color:var(--muted);font-weight:500}
+  .shape-diagram-row .shape-arrow{flex:0 0 28px}
+
+  /* Two path boxes (bottom of slide) */
+  .two-path-row{display:flex;gap:14px;flex:1;min-height:0}
+  .two-path-box{flex:1;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;overflow:auto}
+  .two-path-box.ux-path{background:rgba(232,135,30,.05);border:1.5px solid rgba(232,135,30,.15)}
+  .two-path-box.pm-path{background:rgba(52,120,200,.05);border:1.5px solid rgba(52,120,200,.15)}
+  .two-path-header{font-size:14px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:6px}
+  .two-path-icon{font-size:16px}
+  .two-path-cols{display:flex;gap:10px;flex:1;min-height:0}
+  .two-path-col{flex:1;display:flex;flex-direction:column;gap:5px}
+  .two-path-items{display:flex;flex-direction:column;gap:4px}
+  .two-path-item{background:rgba(255,255,255,.7);border-radius:8px;padding:6px 10px}
+  .two-path-item b{display:block;font-size:11px;font-weight:700;color:var(--ink);margin-bottom:1px}
+  .two-path-item span{font-size:10px;line-height:1.4;color:var(--ink-2)}
+  .two-path-item.keep{padding:5px 10px}
+  .two-path-item.keep b{margin:0;font-size:10.5px}
+
+  /* Expanded role cards (full slide) */
+  .role-grid.expanded{display:flex;gap:14px;flex:1;min-height:0;overflow-y:auto}
+  .role-card-lg{flex:1;background:#FDFBF6;border:1px solid var(--line);border-radius:14px;padding:22px 20px;display:flex;flex-direction:column;gap:4px;min-height:0;overflow-y:auto}
+  .role-card-lg.highlight{background:rgba(140,130,200,.07);border-color:rgba(120,110,180,.18)}
+  .role-icon-lg{font-size:28px}
+  .role-card-lg h3{margin:0;font-size:20px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+  .role-card-lg .role-tagline{margin:0;font-size:12.5px;font-weight:600;color:var(--accent-2)}
+  .role-body{margin-top:8px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .role-body p{margin:0;font-size:13px;line-height:1.55;color:var(--ink-2)}
+  .role-details{display:flex;flex-direction:column;gap:6px;margin-top:auto}
+  .role-detail{display:flex;gap:8px;font-size:12px;line-height:1.45}
+  .role-detail b{flex:0 0 80px;color:var(--ink);font-weight:700}
+  .role-detail span{color:var(--ink-2)}
+
+  /* Upskilling grid (full slide) */
+  .upskill-grid{display:flex;gap:14px;flex:1;min-height:0}
+  .upskill-card{flex:1;border-radius:14px;padding:20px;display:flex;flex-direction:column;gap:8px;overflow:auto}
+  .upskill-card.phase1{background:rgba(245,165,36,.06);border:1.5px solid rgba(245,165,36,.18)}
+  .upskill-card.phase2{background:rgba(140,130,200,.06);border:1.5px solid rgba(140,130,200,.18)}
+  .upskill-card.phase3{background:rgba(130,200,160,.06);border:1.5px solid rgba(130,200,160,.2)}
+  .upskill-header{display:flex;flex-direction:column;gap:1px}
+  .upskill-when-lg{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent-2)}
+  .upskill-card.phase2 .upskill-when-lg{color:#6B5DAA}
+  .upskill-card.phase3 .upskill-when-lg{color:#3D8B5E}
+  .upskill-what-lg{font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+  .upskill-lead{margin:0;font-size:12.5px;line-height:1.5;color:var(--ink-2);font-style:italic}
+  .upskill-items{display:flex;flex-direction:column;gap:6px;margin-top:4px}
+  .upskill-item{background:rgba(255,255,255,.6);border-radius:8px;padding:8px 10px}
+  .upskill-item b{display:block;font-size:12px;font-weight:700;color:var(--ink);margin-bottom:2px}
+  .upskill-item span{font-size:11px;line-height:1.45;color:var(--ink-2)}
+
+  /* Two paths slide */
+  .path-layout{display:flex;gap:0;flex:1;min-height:0;align-items:stretch}
+  .path-col{flex:1;display:flex;flex-direction:column;gap:10px;padding:16px 20px;border-radius:14px}
+  .path-col.ux{background:rgba(232,135,30,.05);border:1.5px solid rgba(232,135,30,.15)}
+  .path-col.pm{background:rgba(52,120,200,.05);border:1.5px solid rgba(52,120,200,.15)}
+  .path-header{display:flex;flex-direction:column;gap:4px}
+  .path-from{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .path-start{margin:0;font-size:11px;line-height:1.45;color:var(--muted);font-style:italic}
+  .path-section{display:flex;flex-direction:column;gap:6px}
+  .path-sec-label{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:6px;align-self:flex-start}
+  .grow-label{background:rgba(140,130,200,.12);color:#6B5DAA}
+  .keep-label{background:rgba(130,200,160,.15);color:#3D8B5E}
+  .path-items{display:flex;flex-direction:column;gap:5px}
+  .path-item{background:rgba(255,255,255,.7);border-radius:8px;padding:7px 10px}
+  .path-item b{display:block;font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:1px}
+  .path-item span{font-size:10.5px;line-height:1.45;color:var(--ink-2)}
+  .path-item.compact{padding:5px 10px}
+  .path-item.compact b{margin:0;font-size:11px}
+  .path-divider{display:flex;align-items:center;justify-content:center;flex:0 0 48px}
+  .path-divider-label{text-align:center;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:rgba(140,130,200,.1);padding:10px 6px;border-radius:10px;line-height:1.4}
+
+  /* Blurring lines slide */
+  .blur-layout{display:flex;gap:24px;flex:1;min-height:0}
+  .blur-left{flex:0 0 44%;display:flex;flex-direction:column;gap:14px}
+  .blur-right{flex:1;display:flex;flex-direction:column;gap:8px}
+  .blur-card{border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .blur-card.old{background:rgba(220,200,180,.12);border:1.5px solid rgba(180,160,140,.18)}
+  .blur-card.new{background:rgba(140,130,200,.08);border:1.5px solid rgba(120,110,180,.18)}
+  .blur-label{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  .blur-card.old .blur-label{color:#8B7A5E}
+  .blur-card.new .blur-label{color:#6B5DAA}
+  .blur-card h4{margin:0;font-size:15px;font-weight:700;color:var(--ink)}
+  .blur-card p{margin:0;font-size:11.5px;line-height:1.5;color:var(--ink-2)}
+
+  /* Lane diagram */
+  .blur-lanes{display:flex;align-items:stretch;gap:0;height:48px}
+  .blur-lane{flex:1;border-radius:8px;padding:8px 14px;display:flex;flex-direction:column;justify-content:center}
+  .blur-lane.pm{background:rgba(52,120,200,.1)}
+  .blur-lane.ux{background:rgba(232,135,30,.1)}
+  .blur-lane span{font-size:11px;font-weight:800;letter-spacing:.04em}
+  .blur-lane.pm span{color:#2E5FA0}
+  .blur-lane.ux span{color:var(--accent-2)}
+  .lane-desc{font-size:9.5px;color:var(--muted);margin-top:1px}
+  .blur-divider{width:2px;background:var(--line);margin:4px 8px;border-radius:2px}
+
+  /* Overlap diagram */
+  .blur-overlap{position:relative;height:56px;display:flex;align-items:center;justify-content:center}
+  .blur-circle{width:80px;height:48px;border-radius:24px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:.04em}
+  .blur-circle.left{background:rgba(52,120,200,.15);color:#2E5FA0;margin-right:-24px;z-index:1}
+  .blur-circle.right{background:rgba(232,135,30,.15);color:var(--accent-2);margin-left:-24px;z-index:1}
+  .blur-center{position:absolute;background:rgba(140,130,200,.2);color:#6B5DAA;font-size:10px;font-weight:800;letter-spacing:.04em;padding:4px 10px;border-radius:10px;z-index:2}
+
+  /* Reasons list */
+  .blur-reasons{display:flex;flex-direction:column;gap:8px}
+  .blur-reason{display:flex;gap:10px;align-items:flex-start}
+  .blur-reason-icon{font-size:16px;flex:0 0 24px;text-align:center;margin-top:1px}
+  .blur-reason b{display:block;font-size:12.5px;font-weight:700;color:var(--ink);margin-bottom:1px}
+  .blur-reason p{margin:0;font-size:11.5px;line-height:1.45;color:var(--ink-2)}
+
+  /* JTBD table */
+  .jtbd{flex:1;overflow:auto;border-radius:12px;border:1px solid var(--line)}
+  table{width:100%;border-collapse:collapse;font-size:11.5px}
+  th,td{padding:9px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}
+  th{background:#FDFBF6;font-weight:700;color:var(--ink);font-size:10.5px;letter-spacing:.04em;position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td b{color:var(--ink)}
+  .jtbd-name{min-width:180px;color:var(--ink)}
+  .col-assist{color:var(--ink-2)}
+  .col-interface{color:var(--ink-2);background:rgba(245,165,36,.04)}
+
+  /* Inflection */
+  .inflect{display:grid;grid-template-columns:1fr 1fr;gap:18px;flex:1;min-height:0}
+  .inflect .panel{background:#FDFBF6;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px}
+  .inflect .big{font-size:28px;font-weight:700;letter-spacing:-.02em;color:var(--accent-2)}
+  .inflect .panel.dark{background:var(--card-ink);color:#fff;border:none}
+  .inflect .panel.dark .big{color:var(--accent)}
+  .inflect .panel.dark p{color:#CFD2E4}
+  .window-bar{grid-column:1/-1;background:linear-gradient(90deg,var(--accent) 0,var(--accent-2) 100%);color:#fff;padding:11px 18px;border-radius:12px;font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
+  .window-bar .r{font-size:10.5px;opacity:.85;letter-spacing:.14em}
+
+  /* Tracks compare */
+  .relate-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;flex:1;min-height:0}
+  .relate{background:#FDFBF6;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px}
+  .relate h4{margin:0;font-size:13px;font-weight:700}
+  .relate p{margin:0;font-size:11.5px;line-height:1.5;color:var(--ink-2)}
+  .relate .icon{width:32px;height:32px;border-radius:10px;background:rgba(245,165,36,.16);display:inline-flex;align-items:center;justify-content:center;font-size:15px}
+
+  /* Hide scrollbar but keep scroll */
+  .content::-webkit-scrollbar,.jtbd::-webkit-scrollbar{height:6px;width:6px}
+  .content::-webkit-scrollbar-thumb,.jtbd::-webkit-scrollbar-thumb{background:rgba(27,31,54,.18);border-radius:4px}
+
+  /* Track detail modal */
+  .modal-backdrop{position:fixed;inset:0;background:rgba(18,21,48,.55);backdrop-filter:blur(6px);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease}
+  .modal-backdrop.open{opacity:1;pointer-events:auto}
+  .modal{width:min(920px,90vw);height:min(640px,85vh);background:var(--card);border-radius:20px;box-shadow:0 20px 60px rgba(18,21,48,.18);display:flex;flex-direction:column;overflow:hidden;transform:translateY(12px) scale(.97);transition:transform .25s ease}
+  .modal-backdrop.open .modal{transform:none}
+  .modal.dark{background:#121530;color:#F7F2E7}
+
+  .modal-top{display:flex;align-items:center;justify-content:space-between;padding:24px 28px 0;flex-shrink:0}
+  .modal-top .modal-title-row{display:flex;align-items:center;gap:12px}
+  .modal-top .emoji{font-size:24px}
+  .modal-top h3{margin:0;font-size:22px;font-weight:700;letter-spacing:-.01em}
+  .modal-top .modal-sub{font-size:12px;font-weight:600;color:var(--accent);margin-top:1px}
+  .modal.dark .modal-top .modal-sub{color:#F5A524}
+  .modal-close{appearance:none;border:none;background:rgba(18,21,48,.06);width:32px;height:32px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--ink);transition:background .15s}
+  .modal-close:hover{background:rgba(18,21,48,.12)}
+  .modal.dark .modal-close{background:rgba(255,255,255,.08);color:#F7F2E7}
+  .modal.dark .modal-close:hover{background:rgba(255,255,255,.15)}
+
+  .stepper{display:flex;gap:4px;padding:16px 28px 0;flex-shrink:0}
+  .step-btn{appearance:none;border:none;background:rgba(18,21,48,.05);color:var(--ink-2);font:inherit;font-size:12px;font-weight:600;padding:8px 16px;border-radius:999px;cursor:pointer;transition:background .15s, color .15s}
+  .step-btn:hover{background:rgba(18,21,48,.1)}
+  .step-btn.active{background:var(--accent);color:#121530}
+  .modal.dark .step-btn{background:rgba(255,255,255,.07);color:#B0B4CC}
+  .modal.dark .step-btn:hover{background:rgba(255,255,255,.12)}
+  .modal.dark .step-btn.active{background:#F5A524;color:#121530}
+
+  .step-content{flex:1;overflow-y:auto;padding:20px 28px 28px}
+  .step-pane{display:none;animation:fade .25s ease}
+  .step-pane.active{display:block}
+  .step-pane h4{margin:0 0 6px;font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .modal.dark .step-pane h4{color:#fff}
+  .step-pane p{margin:0 0 12px;font-size:14px;line-height:1.6;color:var(--ink-2)}
+  .modal.dark .step-pane p{color:#CFD2E4}
+  .step-pane ul{margin:0 0 14px;padding-left:20px}
+  .step-pane li{margin:5px 0;font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+  .modal.dark .step-pane li{color:#D7DAEB}
+  .step-pane li b{color:var(--ink);font-weight:600}
+  .modal.dark .step-pane li b{color:#fff}
+  .step-pane .principle-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .step-pane .princ-item{padding:10px 14px;border-radius:10px;background:rgba(18,21,48,.03)}
+  .modal.dark .step-pane .princ-item{background:rgba(255,255,255,.05)}
+  .step-pane .princ-item b{display:block;font-size:13.5px;font-weight:700;margin-bottom:3px;color:var(--ink)}
+  .modal.dark .step-pane .princ-item b{color:#fff}
+  .step-pane .princ-item span{font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+  .modal.dark .step-pane .princ-item span{color:#CFD2E4}
+  .jtbd-list{display:flex;flex-direction:column;gap:6px}
+  .jtbd-item{display:flex;gap:12px;padding:8px 12px;border-radius:10px;background:rgba(18,21,48,.03);align-items:baseline}
+  .jtbd-item b{flex:0 0 160px;font-size:13px;font-weight:700;color:var(--ink)}
+  .jtbd-item span{font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+  .modal.dark .jtbd-item{background:rgba(255,255,255,.05)}
+  .modal.dark .jtbd-item b{color:#fff}
+  .modal.dark .jtbd-item span{color:#CFD2E4}
+
+  /* Expandable track boxes on slide 4 */
+  .thesis-grid{flex:0 0 auto;min-height:0;align-items:stretch}
+  .track-sections{display:flex;flex-direction:column;gap:10px;margin-top:12px;overflow-y:auto;padding-right:4px;flex:1;min-height:0}
+  .track-sections::-webkit-scrollbar{width:6px}
+  .track-sections::-webkit-scrollbar-thumb{background:rgba(18,21,48,.2);border-radius:3px}
+  .track-box.dark .track-sections::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2)}
+  .t-sec{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:10px;background:rgba(18,21,48,.04)}
+  .track-box.dark .t-sec{background:rgba(255,255,255,.05)}
+  .track-box.dark .t-sec .label{color:#F5A524}
+  .track-box.dark .t-sec p{color:#D7DAEB}
+  .track-box.dark .t-sec ul.tight li{color:#D7DAEB}
+  .t-sec .label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);font-weight:700}
+  .t-sec p{margin:0;font-size:12.5px;line-height:1.5}
+  .t-sec ul.tight{margin:0;padding-left:16px;font-size:12.5px;line-height:1.5}
+  .t-sec ul.tight li{margin:1px 0}
+  .track-box{border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-height:0;border:1px solid transparent;transition:transform .2s ease, box-shadow .2s ease;overflow:hidden}
+  .track-box.light{background:#FBF7EF;border-color:#EADFCB;color:var(--ink)}
+  .track-box.dark{background:#121530;color:#F7F2E7}
+  .track-box.foundation{background:var(--peach);border-color:rgba(232,135,30,.18);overflow:visible;flex-shrink:0}
+  .track-box.foundation .kicker{color:var(--accent-2)}
+  .foundation-items-row{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+  .foundation-chip{flex:1;min-width:140px;background:rgba(255,255,255,.6);border-radius:10px;padding:8px 12px;flex-shrink:0}
+  .foundation-chip b{display:block;font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+  .foundation-chip span{font-size:10.5px;line-height:1.4;color:var(--ink-2)}
+  .track-box.dark .kicker{color:#F5A524}
+  .track-box:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(18,21,48,.08)}
+  .track-box-head{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
+  .track-box-head h3{margin:0;font-size:20px;line-height:1.15;letter-spacing:-.01em;font-weight:700}
+  .track-lede{margin:0;font-size:13.5px;line-height:1.5;opacity:.85}
+  .track-eva{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;background:rgba(18,21,48,.05);margin-top:auto}
+  .track-box.dark .track-eva{background:rgba(245,165,36,.12)}
+  .track-eva .emoji{font-size:22px}
+  .track-eva-kicker{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
+  .track-eva-title{font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .track-head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+  .expand-icon-btn{appearance:none;border:1px solid rgba(18,21,48,.12);background:rgba(18,21,48,.04);color:var(--ink-2);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s ease;flex-shrink:0}
+  .expand-icon-btn:hover{background:#F5A524;border-color:#F5A524;color:#121530}
+  .expand-icon-btn.dark{border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#B0B4CC}
+  .expand-icon-btn.dark:hover{background:#F5A524;border-color:#F5A524;color:#121530}
+  .expand-btn{margin-top:auto;appearance:none;border:1px solid rgba(18,21,48,.15);background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:10px 14px;border-radius:999px;display:inline-flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;transition:background .15s ease, border-color .15s ease}
+  .expand-btn:hover{background:#F5A524;border-color:#F5A524;color:#121530}
+  .expand-btn.dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#F7F2E7}
+  .expand-btn.dark:hover{background:#F5A524;border-color:#F5A524;color:#121530}
+  .expand-btn svg{width:14px;height:14px;flex-shrink:0}
+  /* Panel overlay */
+  .track-panel{position:absolute;inset:0;background:var(--card);z-index:20;display:flex;flex-direction:column;padding:32px 40px;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity .25s ease, transform .25s ease;overflow-y:auto}
+  .track-panel.open{opacity:1;pointer-events:auto;transform:none}
+  .track-panel-inner{display:flex;flex-direction:column;gap:18px;flex:1}
+  .track-panel-head{display:flex;align-items:flex-start;justify-content:space-between;gap:20px;padding-bottom:8px;border-bottom:1px solid rgba(18,21,48,.08)}
+  .track-panel-head h2{margin:4px 0 0;font-size:24px;letter-spacing:-.01em}
+  .close-btn{appearance:none;border:1px solid rgba(18,21,48,.15);background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:8px 14px;border-radius:999px;cursor:pointer;flex-shrink:0}
+  .close-btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .panel-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:14px;flex:1;min-height:0}
+  .panel-card{background:#FBF7EF;border:1px solid #EADFCB;border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;overflow-y:auto;min-height:0}
+  .panel-card .label{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);font-weight:700;margin-bottom:2px}
+  .panel-card p{margin:0;font-size:13px;line-height:1.5;color:var(--ink)}
+  .panel-card ul.tight{margin:0;padding-left:18px;font-size:13px;line-height:1.55;color:var(--ink)}
+  .panel-card ul.tight li{margin:2px 0}
+  .panel-card::-webkit-scrollbar{width:6px}
+  .panel-card::-webkit-scrollbar-thumb{background:rgba(18,21,48,.2);border-radius:3px}
+
+  @media (max-width:1100px){
+    .stage{padding:20px 20px 90px}
+    .slide{padding:32px 28px}
+    .two-col,.three-col,.ds-grid,.inflect,.hero-grid{grid-template-columns:1fr}
+    .timeline{grid-template-columns:1fr 1fr}
+    .relate-grid{grid-template-columns:1fr 1fr}
+    h1.title{font-size:38px}
+    h2.title{font-size:28px}
+    .cover h1{font-size:44px}
+  }
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="bar" id="bar"></div></div>
+
+<div class="stage">
+
+<!-- 1. Cover -->
+<section class="slide cover active" data-title="Cover">
+  <div class="inner">
+    <div>
+      <span class="eva"><span class="dot"></span>Product & Design Vision</span>
+    </div>
+    <div>
+      <h1>From strategy to <span class="hl">experience.</span></h1>
+      <p class="sub">The product strategy is clearly centred on agentic. This vision addresses what that means for product & design: how we evolve the product AOs know today while building the product of the future — and the shared foundation that makes both possible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 2. Primary customer -->
+<section class="slide context-slide" data-title="Why this vision">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <div class="context-layout">
+    <div class="context-left">
+      <span class="pill">Why this vision</span>
+      <h1 class="title" style="font-size:36px;line-height:1.12">The strategy says <em>agentic</em>.<br>270,000 companies say <em>don't break what works</em>.</h1>
+      <p class="context-body">Our product strategy for 2026/27 is clearly centred on agentic AI — three propositions, a skill-based architecture, EVA as the orchestrator. But the mass-market product doesn't stop existing when the agentic product launches. This P&D vision bridges that gap.</p>
+      <div class="context-quote">This vision strives to strike a balance between unlocking our <span class="hl">agentic future</span> and maintaining the mass-market product our firms depend on today.</div>
+    </div>
+    <div class="context-right">
+      <div class="context-card">
+        <div class="context-num">01</div>
+        <span class="kicker">What the strategy tells us</span>
+        <h4>Agentic is the bet — move decisively</h4>
+        <p>Skills become the product unit, the trust layer is a launch prerequisite, and investment shifts rapidly towards agentic from DP5 onwards. The window is open but narrowing.</p>
+      </div>
+      <div class="context-card dark">
+        <div class="context-num" style="color:#F5A524">02</div>
+        <span class="kicker" style="color:#F5A524">What this vision adds</span>
+        <h4 style="color:#fff">A design path for the transition</h4>
+        <p>We need a deliberate P&D approach for both experiences — different principles, different pace, different design needs — while keeping them on a shared foundation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Our customer -->
+<!-- 3. Core thesis -->
+<section class="slide" data-title="The thesis">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Our product & design thesis</span>
+  <h1 class="title">Two experiences, one shared foundation</h1>
+  <p class="subtitle">As we execute the agentic strategy, we'll be running two product experiences in parallel — each with its own principles, pace, and design needs. But they share a foundation: the platform and trust layer, EVA's capabilities, one data model, and one brand.</p>
+  <div class="content">
+    <div class="two-col thesis-grid">
+      <div class="track-box light" data-track="core">
+        <div class="track-box-head">
+          <div class="track-head-row"><div><span class="kicker">Track 1</span><h3>Our core product with EVA as the Assistant</h3></div><button class="expand-icon-btn" data-modal="modal-track1" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
+          <div class="seg-tags"><span class="seg-tag b">Mass-market AOs</span><span class="seg-tag c">Traditional AOs</span></div>
+        </div>
+        <div class="track-sections">
+          <div class="t-sec">
+            <span class="label">The vision</span>
+            <p>The product AOs rely on today, lifted with agentic capabilities. EVA lives inside the current UI as an assistant — suggesting, drafting, reconciling, reminding — making every JTBD sharper without removing the bookkeeper from the driver's seat.</p>
+          </div>
+        </div>
+      </div>
+      <div class="track-box dark" data-track="agentic">
+        <div class="track-box-head">
+          <div class="track-head-row"><div><span class="kicker" style="color:#F5A524">Track 2</span><h3 style="color:#fff">Our agentic product with EVA as the Front Door</h3></div><button class="expand-icon-btn dark" data-modal="modal-track2" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
+          <div class="seg-tags"><span class="seg-tag a">Forward-looking AOs</span></div>
+        </div>
+        <div class="track-sections">
+          <div class="t-sec">
+            <span class="label" style="color:#F5A524">The vision</span>
+            <p style="color:#D7DAEB">The agentic experience from the product strategy, realised as product & design. EVA becomes the front door — orchestrating skills, rendering artefacts, and working firm-wide. The screen is generated on demand, not the starting point.</p>
+          </div>
+        </div>
+      </div>
+      <div class="track-box foundation" data-track="shared" style="grid-column:1/-1;overflow:visible">
+        <div class="track-box-head">
+          <div class="track-head-row"><div><span class="kicker">Shared foundation</span></div><button class="expand-icon-btn" data-modal="modal-foundation" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
+        </div>
+        <div class="foundation-items-row">
+          <div class="foundation-chip"><b>🏗️ Platform & trust layer</b><span>One data model, one trust layer, one permissions engine. The 4-layer architecture serves both experiences.</span></div>
+          <div class="foundation-chip"><b>🤖 EVA capabilities</b><span>Same EVA brain, same skill engine, same memory. Her role differs — Assistant vs. Front Door — but the capabilities compound across both.</span></div>
+          <div class="foundation-chip"><b>🔄 Data flywheel</b><span>Both experiences feed the same data moat. Automation generates labelled data, Advisory refines it, Platform extends it.</span></div>
+          <div class="foundation-chip"><b>✨ One brand</b><span>One e-conomic brand, one EVA identity. The surface adapts to the segment; the brand stays constant.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal: Track 1 -->
+<div class="modal-backdrop" id="modal-track1">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-top">
+      <div>
+        <div class="modal-title-row"><span class="emoji">💻</span><h3>Our core product with EVA as the Assistant</h3></div>
+        <div class="modal-sub">Track 1</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-track1')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
+    </div>
+    <div class="stepper" data-modal-id="modal-track1">
+      <button class="step-btn active" data-step="0">Principles</button>
+      <button class="step-btn" data-step="1">Product choices</button>
+      <button class="step-btn" data-step="2">Ways of working</button>
+      <button class="step-btn" data-step="3">Success metrics</button>
+      <button class="step-btn" data-step="4">Design system</button>
+      <button class="step-btn" data-step="5">JTBD alignment</button>
+    </div>
+    <div class="step-content">
+      <div class="step-pane active" data-step="0">
+        <p>These apply to every feature we ship in the mass-market product. If a design decision conflicts with one of them, it needs to be escalated — not worked around.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>Trust by default</b><span>Defaults are conservative; automation expands only as accuracy is proven in-context for that firm and that client.</span></div>
+          <div class="princ-item"><b>Transparency of action</b><span>A bookkeeper can always see what EVA did, why, on which data, and when — and show it to an auditor in seconds.</span></div>
+          <div class="princ-item"><b>Assistive, not autonomous</b><span>EVA proposes and prepares; the bookkeeper decides and confirms. "Confirm" is a feature, not friction.</span></div>
+          <div class="princ-item"><b>Familiarity preserved</b><span>EVA additions are layered on the existing UI, never in place of it. A bookkeeper who used e-conomic last year feels at home next year.</span></div>
+          <div class="princ-item"><b>Progressive disclosure of AI</b><span>Firms opt into deeper automation at their own pace, per client and per workflow. Safe defaults; high ceiling.</span></div>
+        </div>
+      </div>
+      <div class="step-pane" data-step="1">
+        <p>Open design and product questions we need to answer as we build EVA as the Assistant into the core product.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>Discovery</b><span>How do users discover EVA? Always-visible panel, contextual nudges, or opt-in activation?</span></div>
+          <div class="princ-item"><b>Content interaction</b><span>Can EVA interact with what the user sees — highlight rows, pre-fill fields, annotate the page?</span></div>
+          <div class="princ-item"><b>Planning</b><span>What does it look like when EVA makes a plan? Step list, timeline, or progressive disclosure?</span></div>
+          <div class="princ-item"><b>Clarification</b><span>Can EVA ask clarifying questions back, or should she always act on best-guess?</span></div>
+          <div class="princ-item"><b>Conversation history</b><span>Should there be a persistent conversation history, or is every interaction stateless?</span></div>
+          <div class="princ-item"><b>Uncertainty</b><span>How does EVA handle uncertainty — confidence indicators, caveats, or "here's what I'd do"?</span></div>
+          <div class="princ-item"><b>Undo & reversibility</b><span>Can users undo or roll back an action EVA took? What does that interaction look like?</span></div>
+          <div class="princ-item"><b>Multi-step tasks</b><span>How do we handle multi-step tasks — inline progress, background processing, or notifications?</span></div>
+          <div class="princ-item"><b>Mobile surface</b><span>Where does EVA live on mobile — chat overlay, widget, or integrated into each screen?</span></div>
+        </div>
+      </div>
+      <div class="step-pane" data-step="2">
+        <p>How the mass-market teams operate. Not excuses for being slow — the operating system that lets us take the right kind of risks in a regulated, trust-heavy product.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>Slow is smooth, smooth is fast</b><span>We optimise for not breaking what works. The cost of a regression is measured in firm trust, support load, and churn.</span></div>
+          <div class="princ-item"><b>Risk-managed experimentation</b><span>Every meaningful change ships behind rollout mechanics: staged exposure, firm-segment canaries, monitored success metrics, kill criteria.</span></div>
+          <div class="princ-item"><b>Conservative prioritisation</b><span>We say no more than we say yes. A long backlog is a feature of a mature product, not a bug.</span></div>
+          <div class="princ-item"><b>Hierarchy serves quality</b><span>Design, engineering, compliance, and support have explicit sign-offs on customer-impacting changes.</span></div>
+          <div class="princ-item"><b>Regulatory-grade rigor</b><span>Auditability, GDPR, local tax and bookkeeping rules are non-negotiable inputs. Compliance is part of the definition of done.</span></div>
+          <div class="princ-item"><b>Research grounded in the firm</b><span>We weight signal from the long tail of firms — small practices, sole practitioners, apprentices — not just the loudest or most sophisticated.</span></div>
+        </div>
+      </div>
+      <div class="step-pane" data-step="3">
+        <p>How we measure whether we're succeeding — across trust, adoption, efficiency, quality, and inclusivity.</p>
+        <ul>
+          <li><b>Trust indicators:</b> NPS among partners and bookkeepers, retention, support contact rate, CSAT on AI-assisted interactions</li>
+          <li><b>Adoption depth:</b> % of JTBD steps where EVA suggestions are accepted; feature-level engagement per firm</li>
+          <li><b>Efficiency gained:</b> time-per-client per JTBD (bank reconciled, supplier invoice booked, period closed)</li>
+          <li><b>Quality:</b> correction rate on EVA suggestions, severity-weighted incident rate</li>
+          <li><b>Inclusivity:</b> accessibility audit scores; adoption parity across firm sizes and seniority levels</li>
+        </ul>
+      </div>
+      <div class="step-pane" data-step="4">
+        <h4>Protect the core — keep the legacy product healthy with Taco as we know it today</h4>
+        <p>A solid, evolving design system that lets designers and developers maintain the mass-market product at a sustainable pace, without compromising quality or retention.</p>
+        <ul>
+          <li>Mature existing components into fully functional ones (e.g. Table3)</li>
+          <li>Deep documentation for developers and designers</li>
+          <li>Explicit permission for teams to build "snowflakes" where the core system doesn't yet cover their need</li>
+          <li>Steady investment in accessibility, tokens, and consistency</li>
+        </ul>
+        <p><b>Timeline:</b> Continuous maintenance — this track compounds, it never ends.</p>
+      </div>
+      <div class="step-pane" data-step="5">
+        <p>How EVA as the Assistant shows up across the core jobs of the accounting office — augmenting every workflow without taking the bookkeeper out of the loop.</p>
+        <div class="jtbd-list">
+          <div class="jtbd-item"><b>Collect Documents</b><span>Chases clients, identifies missing docs, drafts the request</span></div>
+          <div class="jtbd-item"><b>Supplier Invoices</b><span>Auto-capture, auto-code, match to PO; plain-language approval queue</span></div>
+          <div class="jtbd-item"><b>Handle Bank</b><span>Reconciles clean cases, ranks the unclear ones, explains each match</span></div>
+          <div class="jtbd-item"><b>Advice About Anomalies</b><span>Flags in real time, drafts the client-facing message</span></div>
+          <div class="jtbd-item"><b>Period Closing</b><span>EVA-driven close checklist, auto-reconciliation, one-click corrections</span></div>
+          <div class="jtbd-item"><b>Business Advisory</b><span>Insight snippets, benchmarks, talking points inside the client view</span></div>
+          <div class="jtbd-item"><b>Prioritise Tasks</b><span>Firm-wide task board with EVA-ranked urgency</span></div>
+          <div class="jtbd-item"><b>Overview & Control</b><span>Partner dashboards with EVA-written narratives</span></div>
+          <div class="jtbd-item"><b>Handle Payroll</b><span>Assisted prep, anomaly flagging, compliance checks</span></div>
+          <div class="jtbd-item"><b>Mobile</b><span>Mobile-first approval queues with EVA-summarised context</span></div>
+          <div class="jtbd-item"><b>Trusted Platform</b><span>Transparent actions, full audit trails, reversibility by default</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Track 2 -->
+<div class="modal-backdrop" id="modal-track2">
+  <div class="modal dark" onclick="event.stopPropagation()">
+    <div class="modal-top">
+      <div>
+        <div class="modal-title-row"><span class="emoji">🤖</span><h3>Our agentic product with EVA as the Front Door</h3></div>
+        <div class="modal-sub">Track 2</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-track2')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
+    </div>
+    <div class="stepper" data-modal-id="modal-track2">
+      <button class="step-btn active" data-step="0">Principles</button>
+      <button class="step-btn" data-step="1">Product choices</button>
+      <button class="step-btn" data-step="2">Ways of working</button>
+      <button class="step-btn" data-step="3">Success metrics</button>
+      <button class="step-btn" data-step="4">Design system</button>
+      <button class="step-btn" data-step="5">JTBD alignment</button>
+    </div>
+    <div class="step-content">
+      <div class="step-pane active" data-step="0">
+        <p>The design principles governing how the Front Door, Skills, Artefacts, and Trust Layer show up to the accounting office.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>Intent over interface</b><span>The primary input is intent — spoken, typed, uploaded, or implied. The UI is generated in service of that intent.</span></div>
+          <div class="princ-item"><b>Firm-scale thinking by default</b><span>EVA thinks across the entire client portfolio. "Reconcile all clients." "Close every VAT-ready client." Firm scale is the default scope.</span></div>
+          <div class="princ-item"><b>Radical transparency of reasoning</b><span>Every action is traceable to the data, the rule, or the precedent that produced it. "Why did you do this?" is always one click away.</span></div>
+          <div class="princ-item"><b>Agency with accountability</b><span>Accountability lives with a named principal — the bookkeeper, the partner, the firm. Permissions and limits are first-class concepts.</span></div>
+          <div class="princ-item"><b>Composable agents, one EVA</b><span>Specialist agents cooperate behind the scenes. To the firm, it is always EVA. One voice, one memory, one identity.</span></div>
+        </div>
+      </div>
+      <div class="step-pane" data-step="1">
+        <p>Open design and product questions we need to answer as we shape the Front Door experience.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>Primary surface</b><span>Does the main experience centre around a chat, a dashboard, or something in between?</span></div>
+          <div class="princ-item"><b>Autonomy visibility</b><span>How can the user see what was done autonomously vs. triggered by a prompt or button-click?</span></div>
+          <div class="princ-item"><b>Review model</b><span>How should completed work be reviewed — approval queue, audit log, or inline annotations?</span></div>
+          <div class="princ-item"><b>Artefacts</b><span>What artefacts should EVA generate — reports, summaries, draft emails, reconciliation files?</span></div>
+          <div class="princ-item"><b>Sharing with BOs</b><span>Can artefacts be shared directly with business owners, and how do permissions work?</span></div>
+          <div class="princ-item"><b>Trade-offs & judgment</b><span>How does EVA present trade-offs or decisions that need human judgment?</span></div>
+          <div class="princ-item"><b>Home screen</b><span>What does the "home screen" look like — activity feed, priority inbox, or status overview?</span></div>
+          <div class="princ-item"><b>Standing instructions</b><span>How does the user set goals or standing instructions for EVA to execute over time?</span></div>
+          <div class="princ-item"><b>Proactive communication</b><span>How does EVA communicate proactively — notifications, daily digest, or ambient signals?</span></div>
+        </div>
+      </div>
+      <div class="step-pane" data-step="2">
+        <p>The agentic track needs a different operating system — one designed for learning velocity, not just shipping velocity.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>Speed is a feature</b><span>We ship daily, measure weekly, and decide monthly. If a competitor is faster, that's a strategic failure, not a neutral fact.</span></div>
+          <div class="princ-item"><b>Small teams, short feedback loops</b><span>Full-stack squads with design, engineering, ML, and domain expertise in the same room. No handoffs. No "phase 2."</span></div>
+          <div class="princ-item"><b>Minimal hierarchy, maximal context</b><span>Decisions happen at the level with the most context, not the highest title. Leaders unblock; they do not gatekeep.</span></div>
+          <div class="princ-item"><b>Experience before engineering</b><span>Every skill is an experience promise before it is a technical one. We define the UX artefact before engineering builds.</span></div>
+          <div class="princ-item"><b>Ship to learn</b><span>Every release is an experiment. We are as proud of things we stop doing as of things we continue. Learning velocity is the primary KPI.</span></div>
+          <div class="princ-item"><b>Reversible decisions fast</b><span>Most decisions in this track are reversible — treat them that way. Irreversible decisions get careful treatment.</span></div>
+          <div class="princ-item"><b>Design in the open — with real firms</b><span>Prototypes over specs. Live demos over decks. A rotating cohort of partner firms is in the build loop from week one.</span></div>
+          <div class="princ-item"><b>Higher risk tolerance — on purpose</b><span>Bugs are acceptable in exchange for learning. Trust-breaking incidents are not. The line between the two is a team-level craft.</span></div>
+        </div>
+      </div>
+      <div class="step-pane" data-step="3">
+        <p>How we measure learning, agent performance, trust under autonomy, and firm outcomes.</p>
+        <ul>
+          <li><b>Learning velocity:</b> # of experiments, % producing directional learning</li>
+          <li><b>Agent performance:</b> task success rate, autonomous completion rate, intervention rate — per JTBD</li>
+          <li><b>Trust under autonomy:</b> correction rate vs. confidence level, calibration accuracy, incident-free hours of autonomous operation</li>
+          <li><b>Firm outcomes:</b> <b>clients-per-bookkeeper</b>, revenue-per-employee, partner NPS among opt-in firms</li>
+          <li><b>Expansion signal:</b> % of active firms choosing EVA-as-Front-Door over legacy surfaces when both are available</li>
+        </ul>
+      </div>
+      <div class="step-pane" data-step="4">
+        <h4>What got us here won't get us there — a new foundation for the AI-native product</h4>
+        <p>A new design system capability that lets teams prototype, iterate, and deliver agentic experiences at a fundamentally different speed — so our teams can out-learn the market, not just out-ship it.</p>
+        <ul>
+          <li>A new package with rewritten tokens, components, and skills/md-files purpose-built for agentic UI</li>
+          <li>Pattern libraries for AI interface design — trust signals, review flows, orchestration surfaces, skill templates, artefact presentation</li>
+          <li>A move from "Design for People" to "Design for People <em>and</em> AI/LLMs": components that LLMs can reason about and assemble</li>
+          <li>A design-system-as-product mindset, with its own roadmap, consumers, and feedback loops</li>
+        </ul>
+        <p><b>Timeline:</b> Kick off the agentic design system work by the <b>beginning of 2027</b>, with early patterns in the hands of agentic squads from day one.</p>
+      </div>
+      <div class="step-pane" data-step="5">
+        <p>How EVA as the Front Door reimagines the same accounting office jobs — operating at firm scale with autonomous execution, surfacing only what needs human attention.</p>
+        <div class="jtbd-list">
+          <div class="jtbd-item"><b>Collect Documents</b><span>Owns the pipeline across the book; bookkeeper sees only exceptions</span></div>
+          <div class="jtbd-item"><b>Supplier Invoices</b><span>Runs accounts payable end-to-end; human approves exceptions only</span></div>
+          <div class="jtbd-item"><b>Handle Bank</b><span>Continuous, autonomous, firm-wide reconciliation</span></div>
+          <div class="jtbd-item"><b>Advice About Anomalies</b><span>Firm-wide risk radar; prepares advisory briefs on demand</span></div>
+          <div class="jtbd-item"><b>Period Closing</b><span>"Close March for every ready client." EVA packages for sign-off</span></div>
+          <div class="jtbd-item"><b>Business Advisory</b><span>Drafts full advisory memos in the partner's voice</span></div>
+          <div class="jtbd-item"><b>Prioritise Tasks</b><span>Runs the firm's day — "what should my team work on this morning?"</span></div>
+          <div class="jtbd-item"><b>Overview & Control</b><span>Natural-language firm-level queries with evidence and source</span></div>
+          <div class="jtbd-item"><b>Handle Payroll</b><span>Runs monthly payroll across the book; surfaces exceptions only</span></div>
+          <div class="jtbd-item"><b>Mobile</b><span>Voice-first — "approve anything below 10k EVA is confident on"</span></div>
+          <div class="jtbd-item"><b>Trusted Platform</b><span>Cryptographically logged, explainable, audit-defensible autonomy</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Shared Foundation -->
+<div class="modal-backdrop" id="modal-foundation">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-top">
+      <div>
+        <div class="modal-title-row"><span class="emoji">🏗️</span><h3>Shared foundation</h3></div>
+        <div class="modal-sub">What both tracks build on</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-foundation')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
+    </div>
+    <div class="stepper" data-modal-id="modal-foundation">
+      <button class="step-btn active" data-step="0">Product choices</button>
+    </div>
+    <div class="step-content">
+      <div class="step-pane active" data-step="0">
+        <p>Cross-cutting product questions that affect both tracks — the skill platform, governance, and value measurement.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>User-created skills</b><span>Should users be able to create their own skills or automations? What's the authoring experience?</span></div>
+          <div class="princ-item"><b>Skill discovery & activation</b><span>How does a user enable, disable, or configure new skills? Marketplace, settings panel, or contextual suggestion?</span></div>
+          <div class="princ-item"><b>Value tracking</b><span>How do we track outcomes and value realised per skill? Dashboard, notifications, or periodic reports?</span></div>
+          <div class="princ-item"><b>Skill maturity</b><span>How do skills get promoted from experimental to trusted? Who decides, and what criteria apply?</span></div>
+          <div class="princ-item"><b>Permissions model</b><span>What's the permissioning model — per-user, per-firm, per-role? How granular should access control be?</span></div>
+          <div class="princ-item"><b>Cross-track consistency</b><span>How do we ensure skills work the same whether surfaced through the Assistant or the Front Door?</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 8. Timeline -->
+<section class="slide" data-title="Timeline">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Product & design roadmap</span>
+  <h1 class="title">EVA's evolution — aligned to the investment horizons</h1>
+  <p class="subtitle">This timeline complements the strategy's investment horizons (H1: Agent Skills as a Product, H2: Platform as a Product). It shows how EVA evolves from assistant to front door across both experiences.</p>
+  <div class="content">
+    <div class="tl-bar"></div>
+    <div class="timeline">
+      <div class="tl-card">
+        <span class="tl-year">Now · 2026</span>
+        <h4>EVA is embedded</h4>
+        <p>Across every core workflow. EVA proposes, pre-fills, explains. Accuracy proven client by client.</p>
+      </div>
+      <div class="tl-card">
+        <span class="tl-year">End 2026</span>
+        <h4>EVA runs the repetitive work</h4>
+        <p>Routine postings are near-zero-touch. Bookkeepers approve exceptions only. Firm unit economics improve — we publish the numbers.</p>
+      </div>
+      <div class="tl-card">
+        <span class="tl-year">2027</span>
+        <h4>EVA is the co-pilot</h4>
+        <p>Conversational practice-level surface in GA. Partners run the firm through EVA. Agentic DS in production.</p>
+      </div>
+      <div class="tl-card">
+        <span class="tl-year">2028</span>
+        <h4>EVA is the front door</h4>
+        <p>For a fast-growing share of firms, EVA <em>is</em> how they use e-conomic. Success measured in clients-per-bookkeeper.</p>
+      </div>
+      <div class="tl-card">
+        <span class="tl-year">2029+</span>
+        <h4>The new norm</h4>
+        <p>5–10× client throughput vs. 2025. e-conomic defines the category for agentic accounting.</p>
+      </div>
+    </div>
+    <div class="impact"><b>Our bet</b>Commit to a first fully-agentic reference firm. Make public, dated commitments. Reward shipping.</div>
+  </div>
+</section>
+
+<!-- 10. Risks -->
+<section class="slide" data-title="Risks & questions">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Open questions & risks</span>
+  <h1 class="title">What we don't know yet</h1>
+  <p class="subtitle">Ambition requires honesty about the gaps. These are the questions we need to resolve as the vision matures — and the risks we manage against.</p>
+  <div class="content">
+    <div class="kicker">Key risks</div>
+    <div class="risk-grid">
+      <div class="risk"><h4><span class="dot"></span>Trust contagion</h4><p>An agentic-track failure damages the mass-market brand. Mitigation: separate release surfaces, clear incident playbooks.</p></div>
+      <div class="risk"><h4><span class="dot"></span>Two-culture split</h4><p>Different ways of working fracture the org. Mitigation: shared EVA platform, deliberate rotation, unified craft.</p></div>
+      <div class="risk"><h4><span class="dot"></span>Under-investing the core</h4><p>Agentic work attracts attention; core pays the bills. Mitigation: ring-fence investment.</p></div>
+      <div class="risk"><h4><span class="dot"></span>Design-system debt</h4><p>If mass-market DS stagnates, we pay in quality and speed. Mitigation: fund both tracks of DS explicitly.</p></div>
+    </div>
+    <div class="kicker" style="margin-top:8px">Open questions worth a room</div>
+    <ul class="tight" style="columns:2;column-gap:40px">
+      <li>Where's the line between "assistive" and "agentic" — and who gets to move it?</li>
+      <li>How do we price two tracks without cannibalising or confusing?</li>
+      <li>What's EVA's personality — and does it flex across tracks and segments?</li>
+      <li>What's the minimum verification surface that makes autonomy feel safe?</li>
+      <li>Who owns the design-system-as-product function?</li>
+      <li>Who is the <em>first</em> firm we commit to taking fully agentic, and when?</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 8. Section title: Org -->
+<section class="slide cover" data-title="One product org">
+  <div class="inner">
+    <div>
+      <span class="eva"><span class="dot"></span>Product & Design · From strategy to experience</span>
+    </div>
+    <div>
+      <h1>Two experiences. <span class="hl">One product org.</span></h1>
+      <p class="sub">The vision demands two tracks with different principles, pace, and design needs. But one org has to deliver both. The question isn't whether we reorganise — it's how we reshape our roles so the same people can operate across both experiences.</p>
+    </div>
+    <div class="meta">
+      <span>Blurring lines</span>
+      <span>Emerging roles</span>
+      <span>The product builder</span>
+      <span>Upskilling path</span>
+    </div>
+  </div>
+</section>
+
+<!-- 9. Blurring lines -->
+<section class="slide" data-title="Blurring lines">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Organisation & roles</span>
+  <h1 class="title">The line between PM and UX is dissolving</h1>
+  <p class="subtitle">AI changes what product work looks like. When a designer can prototype with an LLM and a PM can validate with a live mockup, the traditional handoff model becomes a bottleneck. Maintaining the old boundaries will create more confusion and disruption than removing them.</p>
+  <div class="content">
+    <div class="blur-layout">
+      <div class="blur-left">
+        <div class="blur-card old">
+          <div class="blur-label">The old model</div>
+          <h4>Clear lanes, clean handoffs</h4>
+          <div class="blur-lanes">
+            <div class="blur-lane pm"><span>PM</span><div class="lane-desc">Prioritises · Writes specs · Owns backlog</div></div>
+            <div class="blur-divider"></div>
+            <div class="blur-lane ux"><span>UX</span><div class="lane-desc">Researches · Designs · Hands off to dev</div></div>
+          </div>
+          <p>Works when the problem is well-scoped, the tools are stable, and discovery is a phase — not a constant. But in an AI-native product, the problem changes shape while you're solving it.</p>
+        </div>
+        <div class="blur-card new">
+          <div class="blur-label">The emerging reality</div>
+          <h4>Overlapping skills, shared ownership</h4>
+          <div class="blur-overlap">
+            <div class="blur-circle left">PM</div>
+            <div class="blur-circle right">UX</div>
+            <div class="blur-center">Builder</div>
+          </div>
+          <p>Discovery, prototyping, and delivery blur together. The person closest to the problem should be able to move it forward — regardless of whether their title says PM or UX.</p>
+        </div>
+      </div>
+      <div class="blur-right">
+        <div class="kicker">Why maintaining the split hurts</div>
+        <div class="blur-reasons">
+          <div class="blur-reason">
+            <div class="blur-reason-icon">🐌</div>
+            <div><b>Handoffs slow everything down</b><p>In an AI product, the loop from insight to prototype to validation needs to be hours, not weeks. A PM-to-UX-to-dev relay can't keep up.</p></div>
+          </div>
+          <div class="blur-reason">
+            <div class="blur-reason-icon">🧩</div>
+            <div><b>Context is lost at every boundary</b><p>The person who talked to the firm should be the one sketching the solution. Every translation layer loses signal.</p></div>
+          </div>
+          <div class="blur-reason">
+            <div class="blur-reason-icon">🤖</div>
+            <div><b>AI compresses the skill gap</b><p>LLMs let UXers prototype with real data and PMs generate design artefacts. The tools no longer respect our org chart.</p></div>
+          </div>
+          <div class="blur-reason">
+            <div class="blur-reason-icon">⚡</div>
+            <div><b>Two tracks need versatile people</b><p>The agentic track moves fast; the core track demands depth. Both need people who can flex across discovery, design, and delivery.</p></div>
+          </div>
+        </div>
+        <div class="impact" style="margin-top:12px"><b>The move</b>Don't reorganise for the sake of it. Redefine the roles so the lines match where the work actually happens.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. Three roles -->
+<section class="slide" data-title="Three roles">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Organisation & roles</span>
+  <h1 class="title">Three emerging product roles</h1>
+  <p class="subtitle">The product builder is the core of the new org, but it needs two complementary roles to work. Together, these three roles cover strategy, execution, and enablement — the full surface area of a product organisation built for AI.</p>
+  <div class="content">
+    <div class="role-grid expanded">
+      <div class="role-card-lg">
+        <div class="role-icon-lg">🧭</div>
+        <h3>Product Strategist</h3>
+        <p class="role-tagline">Setting direction</p>
+        <div class="role-body">
+          <p>Driving the strategy and setting direction across both tracks. The strategist owns the "what" and "why" — translating firm needs, market signals, and company ambition into a coherent product direction.</p>
+          <div class="role-details">
+            <div class="role-detail"><b>Owns</b><span>Product vision, roadmap priorities, track-level OKRs, strategic bets</span></div>
+            <div class="role-detail"><b>Works with</b><span>Leadership, product builders, commercial, customer success</span></div>
+            <div class="role-detail"><b>Key output</b><span>Clear, opinionated direction that product builders can execute against</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="role-card-lg highlight">
+        <div class="role-icon-lg">🛠️</div>
+        <h3>Product Builder</h3>
+        <p class="role-tagline">Discovery → Prototyping → Delivery</p>
+        <div class="role-body">
+          <p>The F-shaped product person who closes the gap between design, PM, and engineering. Runs discovery, builds AI prototypes, and delivers solutions — end to end, in both tracks.</p>
+          <div class="role-details">
+            <div class="role-detail"><b>Owns</b><span>Discovery, AI prototyping, solution delivery, experience quality</span></div>
+            <div class="role-detail"><b>Works with</b><span>Engineers, strategists, AI enablers, firms (directly)</span></div>
+            <div class="role-detail"><b>Key output</b><span>Shipped product that solves a real JTBD — tested with real firms</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="role-card-lg">
+        <div class="role-icon-lg">⚡</div>
+        <h3>AI & Platform Enabler</h3>
+        <p class="role-tagline">The platform underneath</p>
+        <div class="role-body">
+          <p>Owns the foundations that product builders build on — the LLM-ready design system, API strategy, mobile experience, and the patterns and tooling that let teams and AI ship together across every surface.</p>
+          <div class="role-details">
+            <div class="role-detail"><b>Owns</b><span>LLM-ready design system, API strategy, mobile platform, AI interaction patterns, agent-composable components</span></div>
+            <div class="role-detail"><b>Works with</b><span>Product builders, platform engineering, mobile teams, API consumers, design system consumers</span></div>
+            <div class="role-detail"><b>Key output</b><span>A coherent platform — design system, APIs, mobile — that AI can reason about and humans trust</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. Product builders deep dive -->
+<section class="slide" data-title="Product builders">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Organisation & roles</span>
+  <h1 class="title">The product builder, up close</h1>
+  <p class="subtitle">Both UXers and PMs evolve through the same shape progression — from specialist to builder to full-stack. The starting point is different, but the destination is the same.</p>
+  <div class="content">
+
+    <!-- Shape diagrams -->
+    <div class="shape-diagram-row">
+      <div class="shape-diagram past-bg">
+        <div class="shape-diagram-label past-h">T-shaped · The specialist</div>
+        <div class="shape-diagram-visual">
+          <div class="shape-t">
+            <div class="t-horiz">Generalist</div>
+            <div class="t-vert">Skill</div>
+          </div>
+        </div>
+        <div class="shape-diagram-desc">One expertise, broad awareness</div>
+      </div>
+      <div class="shape-arrow">→</div>
+      <div class="shape-diagram present-bg">
+        <div class="shape-diagram-label present-h">F-shaped · The product builder</div>
+        <div class="shape-diagram-visual">
+          <div class="shape-f">
+            <div class="f-bar"></div>
+            <div class="f-skill">Skill 1</div>
+            <div class="f-skill">Skill 2</div>
+          </div>
+        </div>
+        <div class="shape-diagram-desc">1 expertise + 1 adjacent skill</div>
+      </div>
+      <div class="shape-arrow">→</div>
+      <div class="shape-diagram future-bg">
+        <div class="shape-diagram-label future-h">E-shaped · The full stack builder</div>
+        <div class="shape-diagram-visual">
+          <div class="shape-e">
+            <div class="e-bar"></div>
+            <div class="e-skill">Skill 1</div>
+            <div class="e-skill">Skill 2</div>
+            <div class="e-skill">Skill 3</div>
+          </div>
+        </div>
+        <div class="shape-diagram-desc">1 expertise + 2 adjacent skills</div>
+      </div>
+    </div>
+
+    <!-- Two path boxes -->
+    <div class="two-path-row">
+      <div class="two-path-box ux-path">
+        <div class="two-path-header"><span class="two-path-icon">🎨</span> UXer → Product Builder</div>
+        <div class="two-path-cols">
+          <div class="two-path-col">
+            <div class="path-sec-label grow-label">What to grow</div>
+            <div class="two-path-items">
+              <div class="two-path-item"><b>Product thinking</b><span>Move from "best design" to "right trade-off." Weigh business value, cost, and user impact together.</span></div>
+              <div class="two-path-item"><b>Prioritisation & strategy</b><span>Own a backlog. Make hard calls about what not to build. Understand the metrics that drive decisions.</span></div>
+              <div class="two-path-item"><b>AI prototyping</b><span>Go beyond mockups. Build functional prototypes with LLMs — prompt engineering, data-driven validation.</span></div>
+            </div>
+          </div>
+          <div class="two-path-col">
+            <div class="path-sec-label keep-label">What to keep</div>
+            <div class="two-path-items">
+              <div class="two-path-item keep"><b>User research & empathy</b></div>
+              <div class="two-path-item keep"><b>Interaction & visual craft</b></div>
+              <div class="two-path-item keep"><b>Prototyping speed</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="two-path-box pm-path">
+        <div class="two-path-header"><span class="two-path-icon">📋</span> PM → Product Builder</div>
+        <div class="two-path-cols">
+          <div class="two-path-col">
+            <div class="path-sec-label grow-label">What to grow</div>
+            <div class="two-path-items">
+              <div class="two-path-item"><b>Design craft</b><span>Develop hands-on design skills. Sketch, prototype, and evaluate quality with confidence.</span></div>
+              <div class="two-path-item"><b>User research fluency</b><span>Run discovery directly — interviews, usability tests, contextual inquiry. Produce research, not just consume it.</span></div>
+              <div class="two-path-item"><b>AI-native building</b><span>Move from writing specs to building with AI. Rapid prototyping, validating with real data in hours.</span></div>
+            </div>
+          </div>
+          <div class="two-path-col">
+            <div class="path-sec-label keep-label">What to keep</div>
+            <div class="two-path-items">
+              <div class="two-path-item keep"><b>Strategic prioritisation</b></div>
+              <div class="two-path-item keep"><b>Stakeholder alignment</b></div>
+              <div class="two-path-item keep"><b>Data-driven decisions</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 12. Upskilling -->
+<section class="slide" data-title="Upskilling path">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Organisation & roles</span>
+  <h1 class="title">Ready by 2027</h1>
+  <p class="subtitle">We have three quarters to upskill our PMs and UXers into these new roles. This is the horizon — a deliberate, phased path from where we are today to kicking off 2027 with product builders staffed and embedded in both tracks.</p>
+  <div class="content">
+    <div class="upskill-grid">
+
+      <div class="upskill-card phase1">
+        <div class="upskill-header">
+          <div class="upskill-when-lg">Q2–Q3 2026</div>
+          <div class="upskill-what-lg">Foundation</div>
+        </div>
+        <p class="upskill-lead">Build shared literacy and start breaking down silos.</p>
+        <div class="upskill-items">
+          <div class="upskill-item"><b>AI literacy programme</b><span>Every PM and UXer completes a hands-on intro to LLMs, prompt engineering, and AI-assisted design. Not theory — applied to our product.</span></div>
+          <div class="upskill-item"><b>Prototyping with LLMs</b><span>Intro sessions on building quick AI prototypes. Every participant builds and tests at least one prototype with a real firm scenario.</span></div>
+          <div class="upskill-item"><b>Role profile drafts</b><span>Product Strategist, Product Builder, and AI & Platform Enabler profiles are drafted, shared, and iterated with the team.</span></div>
+        </div>
+      </div>
+
+      <div class="upskill-card phase2">
+        <div class="upskill-header">
+          <div class="upskill-when-lg">Q4 2026</div>
+          <div class="upskill-what-lg">Practice</div>
+        </div>
+        <p class="upskill-lead">Apply the skills on real work and assess fit.</p>
+        <div class="upskill-items">
+          <div class="upskill-item"><b>Role-fit assessments</b><span>Self-assessment and peer review against the three role profiles. Identify strengths, gaps, and preferred trajectory.</span></div>
+          <div class="upskill-item"><b>Mentorship matching</b><span>Pair each person with a mentor aligned to their target role. Strategists mentor future strategists; builders mentor builders.</span></div>
+          <div class="upskill-item"><b>Community of practice</b><span>Bi-weekly cross-track demos where builders share what they shipped, what they learned, and what they'd do differently.</span></div>
+        </div>
+      </div>
+
+      <div class="upskill-card phase3">
+        <div class="upskill-header">
+          <div class="upskill-when-lg">Q1 2027</div>
+          <div class="upskill-what-lg">Launch</div>
+        </div>
+        <p class="upskill-lead">New roles are live. The org is reshaped.</p>
+        <div class="upskill-items">
+          <div class="upskill-item"><b>Roles defined and staffed</b><span>Product Strategist, Product Builder, and AI & Platform Enabler are official roles with clear expectations, levelling, and career paths.</span></div>
+          <div class="upskill-item"><b>Product Builders embedded</b><span>Builders are placed in both the mass-market and agentic tracks. Each squad has at least one builder who can run end-to-end.</span></div>
+          <div class="upskill-item"><b>AI & Platform Enablers own the DS</b><span>The design-system-as-product function is staffed and operating with its own roadmap, consumers, and feedback loops.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div>
+
+<button class="arrow side-arrow left" id="prev" aria-label="Previous slide">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+<button class="arrow side-arrow right" id="next" aria-label="Next slide">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+</button>
+
+<div class="nav">
+  <div class="sections" id="sections"></div>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const sectionsEl = document.getElementById('sections');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const bar = document.getElementById('bar');
+  let idx = 0;
+
+  // Assign an id to each slide based on its title
+  slides.forEach((s,i)=>{
+    const slug = (s.dataset.title || 'slide-'+i).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+    s.id = slug;
+    const b = document.createElement('button');
+    b.className = 'sec' + (i===0 ? ' active' : '');
+    b.innerHTML = `<span class="num">${String(i+1).padStart(2,'0')}</span>${s.dataset.title || ''}`;
+    b.addEventListener('click', ()=>go(i));
+    sectionsEl.appendChild(b);
+  });
+  const secs = [...sectionsEl.children];
+
+  function go(i, updateHash){
+    idx = Math.max(0, Math.min(slides.length-1, i));
+    slides.forEach((s,k)=>s.classList.toggle('active', k===idx));
+    secs.forEach((b,k)=>b.classList.toggle('active', k===idx));
+    prev.disabled = idx===0;
+    next.disabled = idx===slides.length-1;
+    bar.style.width = ((idx)/(slides.length-1)*100) + '%';
+    // Scroll the active chip into view
+    const active = secs[idx];
+    if (active && active.scrollIntoView) active.scrollIntoView({behavior:'smooth', block:'nearest', inline:'center'});
+    // Update URL hash
+    if (updateHash !== false) history.replaceState(null, '', '#' + slides[idx].id);
+  }
+
+  // On load, jump to slide from hash
+  function goFromHash(){
+    const hash = location.hash.replace('#','');
+    if (hash) {
+      const target = slides.findIndex(s => s.id === hash);
+      if (target >= 0) { go(target, false); return; }
+      // Also support #3 style (1-indexed)
+      const num = parseInt(hash);
+      if (num >= 1 && num <= slides.length) { go(num - 1, false); return; }
+    }
+    go(0, false);
+  }
+  window.addEventListener('hashchange', goFromHash);
+
+  prev.addEventListener('click', ()=>go(idx-1));
+  next.addEventListener('click', ()=>go(idx+1));
+  document.addEventListener('keydown', (e)=>{
+    // Don't navigate slides while a modal is open
+    if (document.querySelector('.modal-backdrop.open')) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { e.preventDefault(); go(idx+1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(idx-1); }
+    else if (e.key === 'Home') { go(0); }
+    else if (e.key === 'End') { go(slides.length-1); }
+  });
+
+  // Touch swipe
+  let tx=null;
+  document.addEventListener('touchstart', (e)=>{ tx = e.touches[0].clientX; }, {passive:true});
+  document.addEventListener('touchend', (e)=>{
+    if (tx===null) return;
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) { dx<0 ? go(idx+1) : go(idx-1); }
+    tx = null;
+  });
+
+  // Modal open/close
+  function closeModal(id){
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('open');
+  }
+  function openModal(id){
+    const el = document.getElementById(id);
+    if (el) el.classList.add('open');
+  }
+
+  // "View details" buttons
+  document.querySelectorAll('[data-modal]').forEach(btn=>{
+    btn.addEventListener('click', (e)=>{
+      e.stopPropagation();
+      openModal(btn.getAttribute('data-modal'));
+    });
+  });
+
+  // Close on backdrop click (clicks that hit the backdrop itself, not the modal)
+  document.querySelectorAll('.modal-backdrop').forEach(bd=>{
+    bd.addEventListener('click', (e)=>{
+      if (e.target === bd) bd.classList.remove('open');
+    });
+  });
+
+  // Stepper tab switching
+  document.querySelectorAll('.step-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const stepper = btn.closest('.modal');
+      const idx2 = btn.getAttribute('data-step');
+      // Deactivate all tabs and panes in this modal
+      stepper.querySelectorAll('.step-btn').forEach(b=>b.classList.remove('active'));
+      stepper.querySelectorAll('.step-pane').forEach(p=>p.classList.remove('active'));
+      // Activate clicked tab and matching pane
+      btn.classList.add('active');
+      const pane = stepper.querySelector('.step-pane[data-step="'+idx2+'"]');
+      if (pane) pane.classList.add('active');
+    });
+  });
+
+  // Escape key closes any open modal
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape'){
+      document.querySelectorAll('.modal-backdrop.open').forEach(bd=>bd.classList.remove('open'));
+    }
+  });
+
+  goFromHash();
+</script>
+</body>
+</html>
