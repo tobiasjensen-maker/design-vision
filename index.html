@@ -521,6 +521,12 @@
   .track-box{border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-height:0;border:1px solid transparent;transition:transform .2s ease, box-shadow .2s ease;overflow:hidden}
   .track-box.light{background:#FBF7EF;border-color:#EADFCB;color:var(--ink)}
   .track-box.dark{background:#121530;color:#F7F2E7}
+  .track-box.foundation{background:var(--peach);border-color:rgba(232,135,30,.18);overflow:visible;flex-shrink:0}
+  .track-box.foundation .kicker{color:var(--accent-2)}
+  .foundation-items-row{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
+  .foundation-chip{flex:1;min-width:140px;background:rgba(255,255,255,.6);border-radius:10px;padding:8px 12px;flex-shrink:0}
+  .foundation-chip b{display:block;font-size:11.5px;font-weight:700;color:var(--ink);margin-bottom:2px}
+  .foundation-chip span{font-size:10.5px;line-height:1.4;color:var(--ink-2)}
   .track-box.dark .kicker{color:#F5A524}
   .track-box:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(18,21,48,.08)}
   .track-box-head{display:flex;flex-direction:column;gap:8px;flex-shrink:0}
@@ -531,6 +537,11 @@
   .track-eva .emoji{font-size:22px}
   .track-eva-kicker{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2px}
   .track-eva-title{font-size:15px;font-weight:700;letter-spacing:-.01em}
+  .track-head-row{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+  .expand-icon-btn{appearance:none;border:1px solid rgba(18,21,48,.12);background:rgba(18,21,48,.04);color:var(--ink-2);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s ease;flex-shrink:0}
+  .expand-icon-btn:hover{background:#F5A524;border-color:#F5A524;color:#121530}
+  .expand-icon-btn.dark{border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#B0B4CC}
+  .expand-icon-btn.dark:hover{background:#F5A524;border-color:#F5A524;color:#121530}
   .expand-btn{margin-top:auto;appearance:none;border:1px solid rgba(18,21,48,.15);background:#fff;color:var(--ink);font:inherit;font-size:13px;font-weight:600;padding:10px 14px;border-radius:999px;display:inline-flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;transition:background .15s ease, border-color .15s ease}
   .expand-btn:hover{background:#F5A524;border-color:#F5A524;color:#121530}
   .expand-btn.dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:#F7F2E7}
@@ -622,8 +633,7 @@
     <div class="two-col thesis-grid">
       <div class="track-box light" data-track="core">
         <div class="track-box-head">
-          <span class="kicker">Track 1</span>
-          <h3>The AI-amplified core product</h3>
+          <div class="track-head-row"><div><span class="kicker">Track 1</span><h3>Our core product with EVA as the Assistant</h3></div><button class="expand-icon-btn" data-modal="modal-track1" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
           <div class="seg-tags"><span class="seg-tag b">Mass-market AOs</span><span class="seg-tag c">Traditional AOs</span></div>
         </div>
         <div class="track-sections">
@@ -632,18 +642,10 @@
             <p>The product AOs rely on today, lifted with agentic capabilities. EVA lives inside the current UI as an assistant — suggesting, drafting, reconciling, reminding — making every JTBD sharper without removing the bookkeeper from the driver's seat.</p>
           </div>
         </div>
-        <div class="track-eva">
-          <span class="emoji">💻</span>
-          <div>
-            <div class="track-eva-title">EVA as the Assistant</div>
-          </div>
-          <button class="expand-btn" data-modal="modal-track1" style="margin-left:auto">View details <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l4 4-4 4"/></svg></button>
-        </div>
       </div>
       <div class="track-box dark" data-track="agentic">
         <div class="track-box-head">
-          <span class="kicker" style="color:#F5A524">Track 2</span>
-          <h3 style="color:#fff">The agentic product</h3>
+          <div class="track-head-row"><div><span class="kicker" style="color:#F5A524">Track 2</span><h3 style="color:#fff">Our agentic product with EVA as the Front Door</h3></div><button class="expand-icon-btn dark" data-modal="modal-track2" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
           <div class="seg-tags"><span class="seg-tag a">Forward-looking AOs</span></div>
         </div>
         <div class="track-sections">
@@ -652,28 +654,17 @@
             <p style="color:#D7DAEB">The agentic experience from the product strategy, realised as product & design. EVA becomes the front door — orchestrating skills, rendering artefacts, and working firm-wide. The screen is generated on demand, not the starting point.</p>
           </div>
         </div>
-        <div class="track-eva">
-          <span class="emoji">🤖</span>
-          <div>
-            <div class="track-eva-title" style="color:#fff">EVA as the Front Door</div>
-          </div>
-          <button class="expand-btn dark" data-modal="modal-track2" style="margin-left:auto">View details <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3l4 4-4 4"/></svg></button>
-        </div>
       </div>
-    </div>
-    <div class="foundation-box">
-      <div class="foundation-head">
-        <span class="foundation-icon">🏗️</span>
-        <div>
-          <div class="foundation-title">Shared foundation</div>
-          <div class="foundation-sub">The two experiences differ in surface and pace — not in substance. The agentic experience is our R&D engine; the mass-market experience is where it scales.</div>
+      <div class="track-box foundation" data-track="shared" style="grid-column:1/-1;overflow:visible">
+        <div class="track-box-head">
+          <div class="track-head-row"><div><span class="kicker">Shared foundation</span></div><button class="expand-icon-btn" data-modal="modal-foundation" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
         </div>
-      </div>
-      <div class="foundation-items">
-        <div class="foundation-item"><b>Platform & trust layer</b><span>One data model, one trust layer, one permissions engine. The 4-layer architecture serves both experiences.</span></div>
-        <div class="foundation-item"><b>EVA capabilities</b><span>Same EVA brain, same skill engine, same memory. Her role differs — Assistant vs. Front Door — but the capabilities compound across both.</span></div>
-<div class="foundation-item"><b>Data flywheel</b><span>Both experiences feed the same data moat. Automation generates labelled data, Advisory refines it, Platform extends it.</span></div>
-        <div class="foundation-item"><b>One brand</b><span>One e-conomic brand, one EVA identity. The surface adapts to the segment; the brand stays constant.</span></div>
+        <div class="foundation-items-row">
+          <div class="foundation-chip"><b>🏗️ Platform & trust layer</b><span>One data model, one trust layer, one permissions engine. The 4-layer architecture serves both experiences.</span></div>
+          <div class="foundation-chip"><b>🤖 EVA capabilities</b><span>Same EVA brain, same skill engine, same memory. Her role differs — Assistant vs. Front Door — but the capabilities compound across both.</span></div>
+          <div class="foundation-chip"><b>🔄 Data flywheel</b><span>Both experiences feed the same data moat. Automation generates labelled data, Advisory refines it, Platform extends it.</span></div>
+          <div class="foundation-chip"><b>✨ One brand</b><span>One e-conomic brand, one EVA identity. The surface adapts to the segment; the brand stays constant.</span></div>
+        </div>
       </div>
     </div>
   </div>
@@ -684,17 +675,18 @@
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-top">
       <div>
-        <div class="modal-title-row"><span class="emoji">💻</span><h3>EVA as the Assistant</h3></div>
-        <div class="modal-sub">Track 1 — The AI-amplified core product</div>
+        <div class="modal-title-row"><span class="emoji">💻</span><h3>Our core product with EVA as the Assistant</h3></div>
+        <div class="modal-sub">Track 1</div>
       </div>
       <button class="modal-close" onclick="closeModal('modal-track1')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
     </div>
     <div class="stepper" data-modal-id="modal-track1">
       <button class="step-btn active" data-step="0">Principles</button>
-      <button class="step-btn" data-step="1">Ways of working</button>
-      <button class="step-btn" data-step="2">Success metrics</button>
-      <button class="step-btn" data-step="3">Design system</button>
-      <button class="step-btn" data-step="4">JTBD alignment</button>
+      <button class="step-btn" data-step="1">Product choices</button>
+      <button class="step-btn" data-step="2">Ways of working</button>
+      <button class="step-btn" data-step="3">Success metrics</button>
+      <button class="step-btn" data-step="4">Design system</button>
+      <button class="step-btn" data-step="5">JTBD alignment</button>
     </div>
     <div class="step-content">
       <div class="step-pane active" data-step="0">
@@ -708,6 +700,20 @@
         </div>
       </div>
       <div class="step-pane" data-step="1">
+        <p>Open design and product questions we need to answer as we build EVA as the Assistant into the core product.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>Discovery</b><span>How do users discover EVA? Always-visible panel, contextual nudges, or opt-in activation?</span></div>
+          <div class="princ-item"><b>Content interaction</b><span>Can EVA interact with what the user sees — highlight rows, pre-fill fields, annotate the page?</span></div>
+          <div class="princ-item"><b>Planning</b><span>What does it look like when EVA makes a plan? Step list, timeline, or progressive disclosure?</span></div>
+          <div class="princ-item"><b>Clarification</b><span>Can EVA ask clarifying questions back, or should she always act on best-guess?</span></div>
+          <div class="princ-item"><b>Conversation history</b><span>Should there be a persistent conversation history, or is every interaction stateless?</span></div>
+          <div class="princ-item"><b>Uncertainty</b><span>How does EVA handle uncertainty — confidence indicators, caveats, or "here's what I'd do"?</span></div>
+          <div class="princ-item"><b>Undo & reversibility</b><span>Can users undo or roll back an action EVA took? What does that interaction look like?</span></div>
+          <div class="princ-item"><b>Multi-step tasks</b><span>How do we handle multi-step tasks — inline progress, background processing, or notifications?</span></div>
+          <div class="princ-item"><b>Mobile surface</b><span>Where does EVA live on mobile — chat overlay, widget, or integrated into each screen?</span></div>
+        </div>
+      </div>
+      <div class="step-pane" data-step="2">
         <p>How the mass-market teams operate. Not excuses for being slow — the operating system that lets us take the right kind of risks in a regulated, trust-heavy product.</p>
         <div class="principle-grid">
           <div class="princ-item"><b>Slow is smooth, smooth is fast</b><span>We optimise for not breaking what works. The cost of a regression is measured in firm trust, support load, and churn.</span></div>
@@ -718,7 +724,7 @@
           <div class="princ-item"><b>Research grounded in the firm</b><span>We weight signal from the long tail of firms — small practices, sole practitioners, apprentices — not just the loudest or most sophisticated.</span></div>
         </div>
       </div>
-      <div class="step-pane" data-step="2">
+      <div class="step-pane" data-step="3">
         <p>How we measure whether we're succeeding — across trust, adoption, efficiency, quality, and inclusivity.</p>
         <ul>
           <li><b>Trust indicators:</b> NPS among partners and bookkeepers, retention, support contact rate, CSAT on AI-assisted interactions</li>
@@ -728,7 +734,7 @@
           <li><b>Inclusivity:</b> accessibility audit scores; adoption parity across firm sizes and seniority levels</li>
         </ul>
       </div>
-      <div class="step-pane" data-step="3">
+      <div class="step-pane" data-step="4">
         <h4>Protect the core — keep the legacy product healthy with Taco as we know it today</h4>
         <p>A solid, evolving design system that lets designers and developers maintain the mass-market product at a sustainable pace, without compromising quality or retention.</p>
         <ul>
@@ -739,7 +745,7 @@
         </ul>
         <p><b>Timeline:</b> Continuous maintenance — this track compounds, it never ends.</p>
       </div>
-      <div class="step-pane" data-step="4">
+      <div class="step-pane" data-step="5">
         <p>How EVA as the Assistant shows up across the core jobs of the accounting office — augmenting every workflow without taking the bookkeeper out of the loop.</p>
         <div class="jtbd-list">
           <div class="jtbd-item"><b>Collect Documents</b><span>Chases clients, identifies missing docs, drafts the request</span></div>
@@ -764,17 +770,18 @@
   <div class="modal dark" onclick="event.stopPropagation()">
     <div class="modal-top">
       <div>
-        <div class="modal-title-row"><span class="emoji">🤖</span><h3>EVA as the Front Door</h3></div>
-        <div class="modal-sub">Track 2 — The agentic product</div>
+        <div class="modal-title-row"><span class="emoji">🤖</span><h3>Our agentic product with EVA as the Front Door</h3></div>
+        <div class="modal-sub">Track 2</div>
       </div>
       <button class="modal-close" onclick="closeModal('modal-track2')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
     </div>
     <div class="stepper" data-modal-id="modal-track2">
       <button class="step-btn active" data-step="0">Principles</button>
-      <button class="step-btn" data-step="1">Ways of working</button>
-      <button class="step-btn" data-step="2">Success metrics</button>
-      <button class="step-btn" data-step="3">Design system</button>
-      <button class="step-btn" data-step="4">JTBD alignment</button>
+      <button class="step-btn" data-step="1">Product choices</button>
+      <button class="step-btn" data-step="2">Ways of working</button>
+      <button class="step-btn" data-step="3">Success metrics</button>
+      <button class="step-btn" data-step="4">Design system</button>
+      <button class="step-btn" data-step="5">JTBD alignment</button>
     </div>
     <div class="step-content">
       <div class="step-pane active" data-step="0">
@@ -788,6 +795,20 @@
         </div>
       </div>
       <div class="step-pane" data-step="1">
+        <p>Open design and product questions we need to answer as we shape the Front Door experience.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>Primary surface</b><span>Does the main experience centre around a chat, a dashboard, or something in between?</span></div>
+          <div class="princ-item"><b>Autonomy visibility</b><span>How can the user see what was done autonomously vs. triggered by a prompt or button-click?</span></div>
+          <div class="princ-item"><b>Review model</b><span>How should completed work be reviewed — approval queue, audit log, or inline annotations?</span></div>
+          <div class="princ-item"><b>Artefacts</b><span>What artefacts should EVA generate — reports, summaries, draft emails, reconciliation files?</span></div>
+          <div class="princ-item"><b>Sharing with BOs</b><span>Can artefacts be shared directly with business owners, and how do permissions work?</span></div>
+          <div class="princ-item"><b>Trade-offs & judgment</b><span>How does EVA present trade-offs or decisions that need human judgment?</span></div>
+          <div class="princ-item"><b>Home screen</b><span>What does the "home screen" look like — activity feed, priority inbox, or status overview?</span></div>
+          <div class="princ-item"><b>Standing instructions</b><span>How does the user set goals or standing instructions for EVA to execute over time?</span></div>
+          <div class="princ-item"><b>Proactive communication</b><span>How does EVA communicate proactively — notifications, daily digest, or ambient signals?</span></div>
+        </div>
+      </div>
+      <div class="step-pane" data-step="2">
         <p>The agentic track needs a different operating system — one designed for learning velocity, not just shipping velocity.</p>
         <div class="principle-grid">
           <div class="princ-item"><b>Speed is a feature</b><span>We ship daily, measure weekly, and decide monthly. If a competitor is faster, that's a strategic failure, not a neutral fact.</span></div>
@@ -800,7 +821,7 @@
           <div class="princ-item"><b>Higher risk tolerance — on purpose</b><span>Bugs are acceptable in exchange for learning. Trust-breaking incidents are not. The line between the two is a team-level craft.</span></div>
         </div>
       </div>
-      <div class="step-pane" data-step="2">
+      <div class="step-pane" data-step="3">
         <p>How we measure learning, agent performance, trust under autonomy, and firm outcomes.</p>
         <ul>
           <li><b>Learning velocity:</b> # of experiments, % producing directional learning</li>
@@ -810,7 +831,7 @@
           <li><b>Expansion signal:</b> % of active firms choosing EVA-as-Front-Door over legacy surfaces when both are available</li>
         </ul>
       </div>
-      <div class="step-pane" data-step="3">
+      <div class="step-pane" data-step="4">
         <h4>What got us here won't get us there — a new foundation for the AI-native product</h4>
         <p>A new design system capability that lets teams prototype, iterate, and deliver agentic experiences at a fundamentally different speed — so our teams can out-learn the market, not just out-ship it.</p>
         <ul>
@@ -821,7 +842,7 @@
         </ul>
         <p><b>Timeline:</b> Kick off the agentic design system work by the <b>beginning of 2027</b>, with early patterns in the hands of agentic squads from day one.</p>
       </div>
-      <div class="step-pane" data-step="4">
+      <div class="step-pane" data-step="5">
         <p>How EVA as the Front Door reimagines the same accounting office jobs — operating at firm scale with autonomous execution, surfacing only what needs human attention.</p>
         <div class="jtbd-list">
           <div class="jtbd-item"><b>Collect Documents</b><span>Owns the pipeline across the book; bookkeeper sees only exceptions</span></div>
@@ -835,6 +856,35 @@
           <div class="jtbd-item"><b>Handle Payroll</b><span>Runs monthly payroll across the book; surfaces exceptions only</span></div>
           <div class="jtbd-item"><b>Mobile</b><span>Voice-first — "approve anything below 10k EVA is confident on"</span></div>
           <div class="jtbd-item"><b>Trusted Platform</b><span>Cryptographically logged, explainable, audit-defensible autonomy</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Shared Foundation -->
+<div class="modal-backdrop" id="modal-foundation">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-top">
+      <div>
+        <div class="modal-title-row"><span class="emoji">🏗️</span><h3>Shared foundation</h3></div>
+        <div class="modal-sub">What both tracks build on</div>
+      </div>
+      <button class="modal-close" onclick="closeModal('modal-foundation')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
+    </div>
+    <div class="stepper" data-modal-id="modal-foundation">
+      <button class="step-btn active" data-step="0">Product choices</button>
+    </div>
+    <div class="step-content">
+      <div class="step-pane active" data-step="0">
+        <p>Cross-cutting product questions that affect both tracks — the skill platform, governance, and value measurement.</p>
+        <div class="principle-grid">
+          <div class="princ-item"><b>User-created skills</b><span>Should users be able to create their own skills or automations? What's the authoring experience?</span></div>
+          <div class="princ-item"><b>Skill discovery & activation</b><span>How does a user enable, disable, or configure new skills? Marketplace, settings panel, or contextual suggestion?</span></div>
+          <div class="princ-item"><b>Value tracking</b><span>How do we track outcomes and value realised per skill? Dashboard, notifications, or periodic reports?</span></div>
+          <div class="princ-item"><b>Skill maturity</b><span>How do skills get promoted from experimental to trusted? Who decides, and what criteria apply?</span></div>
+          <div class="princ-item"><b>Permissions model</b><span>What's the permissioning model — per-user, per-firm, per-role? How granular should access control be?</span></div>
+          <div class="princ-item"><b>Cross-track consistency</b><span>How do we ensure skills work the same whether surfaced through the Assistant or the Front Door?</span></div>
         </div>
       </div>
     </div>
