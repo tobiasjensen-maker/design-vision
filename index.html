@@ -102,14 +102,23 @@
   .track-head h3{margin:0;font-size:18px;font-weight:700}
   .divider{height:1px;background:var(--line);margin:10px 0}
   .timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;flex:1;min-height:0}
-  .tl-card{background:#FDFBF6;border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;min-height:0;position:relative}
-  .tl-card:nth-child(5){background:var(--card-ink);color:#fff;border:none}
+  .tl-card{background:rgba(253,251,246,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:8px;min-height:0;position:relative}
+  .tl-card:nth-child(5){background:rgba(18,21,48,.75);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;border:none}
   .tl-card:nth-child(5) h4, .tl-card:nth-child(5) p{color:#fff !important}
   .tl-year{font-size:11px;font-weight:700;color:var(--accent-2);letter-spacing:.12em;text-transform:uppercase}
   .tl-card:nth-child(5) .tl-year{color:var(--accent)}
   .tl-card h4{margin:0;font-size:13.5px;line-height:1.25;font-weight:700;color:var(--ink)}
   .tl-card p{margin:0;font-size:12px;line-height:1.5;color:var(--ink-2)}
   .tl-bar{height:6px;border-radius:4px;background:linear-gradient(90deg,rgba(245,165,36,.25),rgba(245,165,36,1) 60%,rgba(232,135,30,1));margin:8px 0 14px}
+  .tl-wrapper{position:relative;flex:1;min-height:0;display:flex;flex-direction:column}
+  .tl-bg{position:absolute;bottom:0;left:0;right:0;height:70%;pointer-events:none;border-radius:0 0 14px 14px;overflow:hidden;opacity:.22}
+  .tl-bg svg{width:100%;height:100%;display:block}
+  .adoption-legend{display:flex;gap:14px;justify-content:flex-end;margin-top:auto;padding-top:4px}
+  .adoption-legend span{font-size:10px;color:var(--ink-2);display:flex;align-items:center;gap:5px;opacity:.7}
+  .adoption-legend span::before{content:"";width:7px;height:7px;border-radius:50%;display:inline-block}
+  .adoption-legend .leg-a::before{background:#2dd4a8}
+  .adoption-legend .leg-b::before{background:#6C7AE0}
+  .adoption-legend .leg-c::before{background:#8B5FC7}
   .impact{font-size:11.5px;color:var(--ink-2);background:var(--peach);padding:9px 12px;border-radius:10px;font-weight:500}
   .impact b{color:var(--accent-2);font-weight:700;letter-spacing:.08em;font-size:11px;text-transform:uppercase;margin-right:8px}
 
@@ -518,9 +527,20 @@
   .t-sec p{margin:0;font-size:12.5px;line-height:1.5}
   .t-sec ul.tight{margin:0;padding-left:16px;font-size:12.5px;line-height:1.5}
   .t-sec ul.tight li{margin:1px 0}
-  .track-box{border-radius:18px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-height:0;border:1px solid transparent;transition:transform .2s ease, box-shadow .2s ease;overflow:hidden}
-  .track-box.light{background:#FBF7EF;border-color:#EADFCB;color:var(--ink)}
-  .track-box.dark{background:#121530;color:#F7F2E7}
+  .track-box{border-radius:18px;padding:18px 18px 16px;display:flex;flex-direction:column;gap:8px;min-height:0;border:1px solid var(--line);transition:transform .2s ease, box-shadow .2s ease;overflow:hidden;position:relative}
+  .track-box.light{background:linear-gradient(180deg,#E4EDFB 0%,#FDFBF6 45%);color:var(--ink)}
+  .track-box.dark{background:linear-gradient(180deg,#121530 0%,#1B1F36 100%);border:none;color:#EEF1FF}
+  .track-stage-head{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
+  .track-stage-num{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);background:rgba(245,165,36,.14);padding:3px 7px;border-radius:999px}
+  .track-box.dark .track-stage-num{color:#F5A524;background:rgba(245,165,36,.18)}
+  .track-stage-year{font-size:10.5px;font-weight:600;letter-spacing:.05em;color:var(--muted)}
+  .track-box.dark .track-stage-year{color:#9CA3C4}
+  .track-stage-title{font-size:13px;font-weight:500;color:var(--ink-2);margin:4px 0 0;line-height:1.35}
+  .track-box.dark .track-stage-title{color:#B0B4CC}
+  .track-role{display:inline-flex;align-items:center;gap:6px;background:rgba(108,122,224,.15);color:#4A56B8;font-weight:600;font-size:11px;padding:4px 9px;border-radius:999px;align-self:flex-start;margin-top:2px}
+  .track-box.dark .track-role{background:rgba(245,165,36,.2);color:#F5A524}
+  .track-box.light > .track-box-head > .track-head-row > .expand-icon-btn,
+  .track-box.dark > .track-box-head > .track-head-row > .expand-icon-btn{position:absolute;top:16px;right:16px;z-index:2}
   .track-box.foundation{background:var(--peach);border-color:rgba(232,135,30,.18);overflow:visible;flex-shrink:0}
   .track-box.foundation .kicker{color:var(--accent-2)}
   .foundation-items-row{display:flex;gap:8px;flex-wrap:wrap;flex-shrink:0}
@@ -574,6 +594,96 @@
     h2.title{font-size:28px}
     .cover h1{font-size:44px}
   }
+
+  /* ——— AI convergence slide ——— */
+  .converge-wrap{display:grid;grid-template-columns:1fr 18px 1fr 18px 1fr;gap:0;flex:1;min-height:0;align-items:stretch}
+  .converge-stage{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;display:flex;flex-direction:column;min-height:0;position:relative;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:rgba(18,21,48,.2) transparent}
+  .converge-stage::-webkit-scrollbar{width:6px}
+  .converge-stage::-webkit-scrollbar-track{background:transparent}
+  .converge-stage::-webkit-scrollbar-thumb{background:rgba(18,21,48,.2);border-radius:999px}
+  .converge-stage::-webkit-scrollbar-thumb:hover{background:rgba(18,21,48,.35)}
+  .converge-stage.s3{scrollbar-color:rgba(255,255,255,.2) transparent}
+  .converge-stage.s3::-webkit-scrollbar-thumb{background:rgba(255,255,255,.2)}
+  .converge-stage.s3::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.35)}
+  .converge-stage.s1{background:linear-gradient(180deg,#FEEFDD 0%,#FDFBF6 45%)}
+  .converge-stage.s2{background:linear-gradient(180deg,#E4EDFB 0%,#FDFBF6 45%)}
+  .converge-stage.s3{background:linear-gradient(180deg,#121530 0%,#1B1F36 100%);border:none;color:#EEF1FF}
+  .converge-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:22px;font-weight:600}
+  .conv-stage-head{display:flex;align-items:baseline;gap:8px;margin-bottom:2px}
+  .conv-stage-num{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);background:rgba(245,165,36,.14);padding:3px 7px;border-radius:999px}
+  .converge-stage.s3 .conv-stage-num{color:#F5A524;background:rgba(245,165,36,.18)}
+  .conv-stage-year{font-size:10.5px;font-weight:600;letter-spacing:.05em;color:var(--muted)}
+  .converge-stage.s3 .conv-stage-year{color:#9CA3C4}
+  .conv-stage-title{font-size:18px;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin:4px 0 2px;color:var(--ink)}
+  .converge-stage.s3 .conv-stage-title{color:#fff}
+  .conv-stage-sub{font-size:12.5px;line-height:1.45;color:var(--ink-2);margin:0 0 12px}
+  .converge-stage.s3 .conv-stage-sub{color:#B0B4CC}
+  .conv-role{display:inline-flex;align-items:center;gap:6px;background:rgba(18,21,48,.06);color:var(--ink);font-weight:600;font-size:11px;padding:4px 9px;border-radius:999px;margin-bottom:10px;align-self:flex-start}
+  .converge-stage.s2 .conv-role{background:rgba(108,122,224,.15);color:#4A56B8}
+  .converge-stage.s3 .conv-role{background:rgba(245,165,36,.2);color:#F5A524}
+  .conv-products{display:flex;flex-direction:column;gap:6px}
+  .conv-chip{background:#fff;border:1px solid var(--line);border-radius:8px;padding:7px 10px;font-size:11.5px;line-height:1.35;color:var(--ink)}
+  .conv-chip b{font-weight:600;color:var(--ink)}
+  .conv-chip span{display:block;color:var(--muted);font-size:10.5px;margin-top:1px}
+  .converge-stage.s1 .conv-hub{background:#fff;border:1.5px solid #F5A524;border-radius:10px;padding:10px 12px}
+  .converge-stage.s1 .conv-hub b{color:#B5720F;font-size:12px}
+  .converge-stage.s2 .conv-hub{background:#fff;border:1.5px solid #6C7AE0;border-radius:10px;padding:10px 12px}
+  .converge-stage.s2 .conv-hub b{color:#4A56B8;font-size:12px}
+  .converge-stage.s3 .conv-hub{background:rgba(245,165,36,.1);border:1.5px solid rgba(245,165,36,.5);border-radius:10px;padding:10px 12px}
+  .converge-stage.s3 .conv-hub b{color:#F5A524;font-size:12px}
+  .conv-tools-label{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+  .conv-tools{display:flex;flex-wrap:wrap;gap:4px}
+  .conv-tool-tag{background:rgba(18,21,48,.05);border:1px solid var(--line);border-radius:6px;padding:3px 7px;font-size:10.5px;color:var(--ink-2)}
+  .converge-stage.s3 .conv-chip{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1);color:#EEF1FF}
+  .converge-stage.s3 .conv-chip b{color:#fff}
+  .converge-stage.s3 .conv-chip span{color:#9CA3C4}
+  .conv-footer{font-size:11px;line-height:1.4;color:var(--ink-2);margin-top:10px;padding-top:8px;border-top:1px dashed rgba(18,21,48,.12);font-style:italic}
+  .converge-stage.s3 .conv-footer{color:#B0B4CC;border-top-color:rgba(255,255,255,.12)}
+
+  .tl-stage{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);background:rgba(245,165,36,.14);padding:2px 7px;border-radius:999px;margin-top:4px;width:fit-content}
+  .tl-card:nth-child(5) .tl-stage{color:#F5A524;background:rgba(245,165,36,.2)}
+
+  /* ——— Reality check slide ——— */
+  .reality-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;flex:1;min-height:0}
+  .reality-left{position:relative;background:linear-gradient(180deg,#FDFBF6 0%,#F7F4EE 100%);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:10px;overflow:hidden}
+  .reality-left::before,.reality-left::after{content:"";position:absolute;border-radius:50%;filter:blur(40px);opacity:.35;z-index:0;pointer-events:none}
+  .reality-left::before{width:180px;height:180px;background:#FEEFDD;top:-40px;right:-40px}
+  .reality-left::after{width:160px;height:160px;background:#EEE8FB;bottom:-40px;left:-40px}
+  .reality-label{position:relative;z-index:1;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .reality-head{position:relative;z-index:1;font-size:17px;font-weight:700;color:var(--ink);line-height:1.25;margin:0}
+  .reality-scatter{position:relative;z-index:1;display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(0,1fr);gap:10px;flex:1;min-height:0;margin-top:4px}
+  .reality-ai{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 1px 2px rgba(18,21,48,.04);transform:rotate(var(--rot,0deg));position:relative}
+  .reality-ai.a1{grid-column:1/span 2;grid-row:1;--rot:-.4deg}
+  .reality-ai.a2{grid-column:3/span 2;grid-row:1;--rot:.5deg}
+  .reality-ai.a3{grid-column:5/span 2;grid-row:1;--rot:-.5deg}
+  .reality-ai.a4{grid-column:1/span 2;grid-row:2;--rot:.4deg}
+  .reality-ai.a5{grid-column:3/span 2;grid-row:2;--rot:-.5deg}
+  .reality-ai.a6{grid-column:5/span 2;grid-row:2;--rot:.5deg}
+  .reality-ai-name{font-size:15px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:8px;line-height:1.25}
+  .reality-ai-emoji{font-size:17px}
+  .reality-ai-desc{font-size:12.5px;line-height:1.45;color:var(--ink-2)}
+  .reality-ai-tag{position:absolute;top:-7px;right:10px;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:#FEEFDD;color:var(--accent-2);border:1px solid rgba(245,165,36,.28)}
+  .reality-ai-tag.purple{background:#EEE8FB;color:#6B4FD7;border-color:rgba(107,79,215,.28)}
+  .reality-ai-tag.blue{background:#E4EDFB;color:#3B5BDB;border-color:rgba(59,91,219,.28)}
+  .reality-ai-tag.green{background:#E3F4E8;color:#1F8A4C;border-color:rgba(31,138,76,.28)}
+  .reality-ai-tag.amber{background:#FEEFDD;color:var(--accent-2);border-color:rgba(245,165,36,.28)}
+  .reality-right{display:flex;flex-direction:column;gap:10px;min-height:0;overflow-y:auto}
+  .reality-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:0;display:block;overflow:hidden}
+  .reality-card.amber{background:linear-gradient(180deg,#FFF6E8 0%,#FEEFDD 100%);border-color:rgba(245,165,36,.25)}
+  .reality-card>summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;flex-direction:column;gap:4px;position:relative}
+  .reality-card>summary::-webkit-details-marker{display:none}
+  .reality-card>summary::after{content:"";position:absolute;right:16px;top:50%;width:7px;height:7px;border-right:1.5px solid var(--ink-2);border-bottom:1.5px solid var(--ink-2);transform:translateY(-70%) rotate(45deg);transition:transform .2s ease;transform-origin:center}
+  .reality-card[open]>summary::after{transform:translateY(-30%) rotate(-135deg)}
+  .reality-card>summary:hover{background:rgba(18,21,48,.02)}
+  .reality-card.amber>summary:hover{background:rgba(245,165,36,.06)}
+  .reality-card-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .reality-card h4{font-size:14px;font-weight:700;margin:0;color:var(--ink);line-height:1.25;padding-right:24px}
+  .reality-card-body{padding:0 16px 14px}
+  .reality-card p{font-size:13.5px;line-height:1.55;color:var(--ink-2);margin:4px 0 0}
+  .reality-bridge{background:linear-gradient(135deg,#121530 0%,#1B1F36 100%);color:#fff;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+  .reality-bridge-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#F5A524}
+  .reality-bridge h4{font-size:14.5px;font-weight:700;margin:0;color:#fff;line-height:1.3}
+  .reality-bridge p{font-size:12px;line-height:1.5;color:#B0B4CC;margin:0}
 </style>
 </head>
 <body>
@@ -603,7 +713,7 @@
       <span class="pill">Why this vision</span>
       <h1 class="title" style="font-size:36px;line-height:1.12">The strategy says <em>agentic</em>.<br>270,000 companies say <em>don't break what works</em>.</h1>
       <p class="context-body">Our product strategy for 2026/27 is clearly centred on agentic AI — three propositions, a skill-based architecture, EVA as the orchestrator. But the mass-market product doesn't stop existing when the agentic product launches. This P&D vision bridges that gap.</p>
-      <div class="context-quote">This vision strives to strike a balance between unlocking our <span class="hl">agentic future</span> and maintaining the mass-market product our firms depend on today.</div>
+      <div class="context-quote">This vision strives to strike a balance between unlocking our <span class="hl">agentic future</span> and maintaining the mass-market product our AOs depend on today.</div>
     </div>
     <div class="context-right">
       <div class="context-card">
@@ -623,35 +733,177 @@
 </section>
 
 <!-- Our customer -->
-<!-- 3. Core thesis -->
+<!-- 3. Reality check -->
+<section class="slide" data-title="Reality check">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Reality check</span>
+  <h1 class="title">We're experimenting a lot with AI — and it shows in the experience</h1>
+  <p class="subtitle">The current AI initiatives are promising on their own. But the customer meets them one at a time, through different doors, with different voices. We need a more coherent vision for how it all ties together — and this vision aims to paint a picture of what that looks like.</p>
+  <div class="content">
+    <div class="reality-wrap">
+
+      <div class="reality-left">
+        <div class="reality-label">Our AI bets, today</div>
+        <p class="reality-head">Six AI initiatives in flight — each promising, each living in its own lane.</p>
+        <div class="reality-scatter">
+          <div class="reality-ai a1">
+            <span class="reality-ai-tag purple">Agentic</span>
+            <div class="reality-ai-name"><span class="reality-ai-emoji">🤖</span> EVA as the Assistant</div>
+            <div class="reality-ai-desc">Answers questions and runs simple tasks inside existing workflows.</div>
+          </div>
+          <div class="reality-ai a2">
+            <span class="reality-ai-tag blue">Support</span>
+            <div class="reality-ai-name"><span class="reality-ai-emoji">💬</span> Fin.ai</div>
+            <div class="reality-ai-desc">Our support agent handling customer queries.</div>
+          </div>
+          <div class="reality-ai a3">
+            <span class="reality-ai-tag purple">Agentic</span>
+            <div class="reality-ai-name"><span class="reality-ai-emoji">📊</span> Financial Insights</div>
+            <div class="reality-ai-desc">Standalone AI product for advisory work.</div>
+          </div>
+          <div class="reality-ai a4">
+            <span class="reality-ai-tag green">Functional automation</span>
+            <div class="reality-ai-name"><span class="reality-ai-emoji">✨</span> Autosuggest &amp; LLM</div>
+            <div class="reality-ai-desc">Inline ML/LLM assists across the product.</div>
+          </div>
+          <div class="reality-ai a5">
+            <span class="reality-ai-tag amber">Adjacent</span>
+            <div class="reality-ai-name"><span class="reality-ai-emoji">📋</span> Praksis AI</div>
+            <div class="reality-ai-desc">AI-driven task management for the AO.</div>
+          </div>
+          <div class="reality-ai a6">
+            <span class="reality-ai-tag purple">Agentic</span>
+            <div class="reality-ai-name"><span class="reality-ai-emoji">🔍</span> Anomaly Detection</div>
+            <div class="reality-ai-desc">Spots unusual transactions and patterns before they become problems.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="reality-right">
+        <details class="reality-card">
+          <summary>
+            <div class="reality-card-label">The promise</div>
+            <h4>Every initiative is pushing on something real</h4>
+          </summary>
+          <div class="reality-card-body">
+            <p>Each bet is finding genuine customer value in its own slice — Fin.ai is resolving support tickets, Financial Insights is opening up advisory, Autosuggest is quietly removing friction in bookkeeping, Anomaly Detection is catching issues before they escalate, Praksis is shaping how AOs run their day, and EVA is earning trust inside the product itself.</p>
+            <p>These are not false starts. They are live proof that our customers want AI in their work — and that we have the domain, data, and distribution to deliver it. The last thing we should do is slow any of them down.</p>
+          </div>
+        </details>
+        <details class="reality-card amber">
+          <summary>
+            <div class="reality-card-label">The reality</div>
+            <h4>The customer sees six AIs, not one</h4>
+          </summary>
+          <div class="reality-card-body">
+            <p>Different doors. Different voices. Different onboarding. Different trust models. An accountant who meets Fin.ai in support, Financial Insights in advisory, and EVA in-product doesn't experience one intelligent partner — they experience five tools that happen to share a logo.</p>
+            <p>That fragmentation has a cost: trust is rebuilt from zero every time, value compounds nowhere, and the story we tell the market becomes a list instead of a vision. The ambition is clear; the <i>coherence</i> is not.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 4. AI convergence -->
+<section class="slide" data-title="Converging our AI">
+  <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
+  <span class="pill">Converging our AI streams</span>
+  <h1 class="title">From scattered AI to AI as the platform</h1>
+  <p class="subtitle">We already have multiple AI bets in flight across the company. The vision isn't to add more — it's to converge them. EVA becomes the surface that unifies every AI stream we've invested in, in three deliberate stages.</p>
+  <div class="content">
+    <div class="converge-wrap">
+
+      <div class="converge-stage s1">
+        <div class="conv-stage-head"><span class="conv-stage-num">Stage 1</span><span class="conv-stage-year">Today · 2026</span></div>
+        <div class="conv-stage-title">AI is scattered</div>
+        <p class="conv-stage-sub">Multiple AI products, each solving its own slice. Powerful individually — fragmented collectively.</p>
+        <div class="conv-hub"><b>🤖 EVA as the Assistant</b><span style="display:block;font-size:11.5px;color:var(--ink-2);margin-top:2px">Answers questions and runs simple tasks inside existing workflows.</span></div>
+        <div class="conv-tools-label">Works alongside</div>
+        <div class="conv-products">
+          <div class="conv-chip"><b>Fin.ai</b><span>The support agent handling customer queries.</span></div>
+          <div class="conv-chip"><b>Financial Insights</b><span>Standalone AI product for advisory work.</span></div>
+          <div class="conv-chip"><b>Autosuggest &amp; LLM suggestions</b><span>Inline ML/LLM assists across the product.</span></div>
+          <div class="conv-chip"><b>Praksis AI</b><span>AI-driven task management for the AO.</span></div>
+          <div class="conv-chip"><b>Anomaly Detection</b><span>Spots unusual transactions and patterns early.</span></div>
+        </div>
+        <p class="conv-footer">Each stream proves value in isolation — but the AO sees six AIs, not one.</p>
+      </div>
+
+      <div class="converge-arrow">→</div>
+
+      <div class="converge-stage s2">
+        <div class="conv-stage-head"><span class="conv-stage-num">Stage 2</span><span class="conv-stage-year">2027</span></div>
+        <div class="conv-stage-title">AI is centralised</div>
+        <p class="conv-stage-sub">EVA orchestrates the other AI products from one central point in the product.</p>
+        <div class="conv-hub"><b>🎛️ EVA as the Operator</b><span style="display:block;font-size:11.5px;color:var(--ink-2);margin-top:2px">One entry point. One voice. One memory. Still firmly inside the mass-market product.</span></div>
+        <div class="conv-tools-label">Operates as tools</div>
+        <div class="conv-tools">
+          <span class="conv-tool-tag">Fin.ai</span>
+          <span class="conv-tool-tag">Financial Insights</span>
+          <span class="conv-tool-tag">Autosuggest</span>
+          <span class="conv-tool-tag">Anomaly Detection</span>
+          <span class="conv-tool-tag">Praksis AI</span>
+          <span class="conv-tool-tag">Skill engine</span>
+        </div>
+        <p class="conv-footer">The AO talks to EVA; EVA routes the work to the right AI underneath.</p>
+      </div>
+
+      <div class="converge-arrow">→</div>
+
+      <div class="converge-stage s3">
+        <div class="conv-stage-head"><span class="conv-stage-num">Stage 3</span><span class="conv-stage-year">2028+</span></div>
+        <div class="conv-stage-title">AI is the platform</div>
+        <p class="conv-stage-sub">Every automation and AI capability is packaged as an API. EVA composes them into the new front-door experience.</p>
+        <div class="conv-hub s3-hub"><b>🚪 EVA is the experience</b><span style="display:block;font-size:11.5px;color:#B0B4CC;margin-top:2px">The main interface AOs interact with. No navigation, no menus — EVA is the product.</span></div>
+        <div class="conv-tools-label" style="color:#9CA3C4">Composed from</div>
+        <div class="conv-products">
+          <div class="conv-chip"><b>Skills as APIs</b><span>Every capability — reconciliation, payroll, advisory — is a first-class, composable skill.</span></div>
+          <div class="conv-chip"><b>Agent-composable UI</b><span>EVA renders the right surface on demand; screens become artefacts.</span></div>
+          <div class="conv-chip"><b>Third-party &amp; internal parity</b><span>Our own AI and partner AI plug into EVA through the same contract.</span></div>
+          <div class="conv-chip"><b>Data &amp; trust fabric</b><span>One permissions engine, one audit log, one memory — across every skill.</span></div>
+        </div>
+        <p class="conv-footer">EVA stops being a feature inside the product — she becomes the way the product is used.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 5. Core thesis -->
 <section class="slide" data-title="The thesis">
   <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
   <span class="pill">Our product & design thesis</span>
   <h1 class="title">Two experiences, one shared foundation</h1>
-  <p class="subtitle">As we execute the agentic strategy, we'll be running two product experiences in parallel — each with its own principles, pace, and design needs. But they share a foundation: the platform and trust layer, EVA's capabilities, one data model, and one brand.</p>
+  <p class="subtitle">Stages 2 and 3 don't happen in sequence — they happen in parallel. We centralise AI inside the mass-market product <em>and</em> build the platform-native agentic experience at the same time. Two experiences, each with its own principles, pace, and design needs — sharing one foundation: the platform and trust layer, EVA's capabilities, one data model, and one brand.</p>
   <div class="content">
     <div class="two-col thesis-grid">
       <div class="track-box light" data-track="core">
         <div class="track-box-head">
-          <div class="track-head-row"><div><span class="kicker">Track 1</span><h3>Our core product with EVA as the Assistant</h3></div><button class="expand-icon-btn" data-modal="modal-track1" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
+          <div class="track-stage-head"><span class="track-stage-num">Stage 2</span><span class="track-stage-year">2026 – 2027</span></div>
+          <div class="track-head-row"><div><h3>AI is centralised</h3></div><button class="expand-icon-btn" data-modal="modal-track1" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
+          <div class="track-stage-title">Our core product with EVA as the Operator</div>
           <div class="seg-tags"><span class="seg-tag b">Mass-market AOs</span><span class="seg-tag c">Traditional AOs</span></div>
         </div>
         <div class="track-sections">
           <div class="t-sec">
             <span class="label">The vision</span>
-            <p>The product AOs rely on today, lifted with agentic capabilities. EVA lives inside the current UI as an assistant — suggesting, drafting, reconciling, reminding — making every JTBD sharper without removing the bookkeeper from the driver's seat.</p>
+            <p>The product AOs rely on today, with AI centralised inside it. EVA becomes the operator — one entry point, one voice, one memory — orchestrating Fin.ai, Financial Insights, Autosuggest, Praksis and the skill engine from within the current UI. The bookkeeper stays in the driver's seat; EVA routes the work underneath.</p>
           </div>
         </div>
       </div>
       <div class="track-box dark" data-track="agentic">
         <div class="track-box-head">
-          <div class="track-head-row"><div><span class="kicker" style="color:#F5A524">Track 2</span><h3 style="color:#fff">Our agentic product with EVA as the Front Door</h3></div><button class="expand-icon-btn dark" data-modal="modal-track2" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
+          <div class="track-stage-head"><span class="track-stage-num">Stage 3</span><span class="track-stage-year">2028+</span></div>
+          <div class="track-head-row"><div><h3 style="color:#fff">AI is the platform</h3></div><button class="expand-icon-btn dark" data-modal="modal-track2" title="View details"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M9.5 2.5H13.5V6.5M13.5 2.5L8.5 7.5M6.5 13.5H2.5V9.5M2.5 13.5L7.5 8.5"/></svg></button></div>
+          <div class="track-stage-title">Our agentic product with EVA as the Front Door</div>
           <div class="seg-tags"><span class="seg-tag a">Forward-looking AOs</span></div>
         </div>
         <div class="track-sections">
           <div class="t-sec">
             <span class="label" style="color:#F5A524">The vision</span>
-            <p style="color:#D7DAEB">The agentic experience from the product strategy, realised as product & design. EVA becomes the front door — orchestrating skills, rendering artefacts, and working firm-wide. The screen is generated on demand, not the starting point.</p>
+            <p style="color:#D7DAEB">Every capability becomes a composable skill behind an API, and EVA becomes the front door. She orchestrates those skills, renders artefacts on demand, and works AO-wide. The screen is generated by the agent, not the starting point of the product.</p>
           </div>
         </div>
       </div>
@@ -675,8 +927,8 @@
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-top">
       <div>
-        <div class="modal-title-row"><span class="emoji">💻</span><h3>Our core product with EVA as the Assistant</h3></div>
-        <div class="modal-sub">Track 1</div>
+        <div class="modal-title-row"><span class="emoji">💻</span><h3>Our core product with EVA as the Operator</h3></div>
+        <div class="modal-sub">Stage 2 · AI is centralised</div>
       </div>
       <button class="modal-close" onclick="closeModal('modal-track1')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
     </div>
@@ -692,15 +944,15 @@
       <div class="step-pane active" data-step="0">
         <p>These apply to every feature we ship in the mass-market product. If a design decision conflicts with one of them, it needs to be escalated — not worked around.</p>
         <div class="principle-grid">
-          <div class="princ-item"><b>Trust by default</b><span>Defaults are conservative; automation expands only as accuracy is proven in-context for that firm and that client.</span></div>
+          <div class="princ-item"><b>Trust by default</b><span>Defaults are conservative; automation expands only as accuracy is proven in-context for that AO and that client.</span></div>
           <div class="princ-item"><b>Transparency of action</b><span>A bookkeeper can always see what EVA did, why, on which data, and when — and show it to an auditor in seconds.</span></div>
           <div class="princ-item"><b>Assistive, not autonomous</b><span>EVA proposes and prepares; the bookkeeper decides and confirms. "Confirm" is a feature, not friction.</span></div>
           <div class="princ-item"><b>Familiarity preserved</b><span>EVA additions are layered on the existing UI, never in place of it. A bookkeeper who used e-conomic last year feels at home next year.</span></div>
-          <div class="princ-item"><b>Progressive disclosure of AI</b><span>Firms opt into deeper automation at their own pace, per client and per workflow. Safe defaults; high ceiling.</span></div>
+          <div class="princ-item"><b>Progressive disclosure of AI</b><span>AOs opt into deeper automation at their own pace, per client and per workflow. Safe defaults; high ceiling.</span></div>
         </div>
       </div>
       <div class="step-pane" data-step="1">
-        <p>Open design and product questions we need to answer as we build EVA as the Assistant into the core product.</p>
+        <p>Open design and product questions we need to answer as we build EVA as the Operator into the core product.</p>
         <div class="principle-grid">
           <div class="princ-item"><b>Discovery</b><span>How do users discover EVA? Always-visible panel, contextual nudges, or opt-in activation?</span></div>
           <div class="princ-item"><b>Content interaction</b><span>Can EVA interact with what the user sees — highlight rows, pre-fill fields, annotate the page?</span></div>
@@ -716,22 +968,22 @@
       <div class="step-pane" data-step="2">
         <p>How the mass-market teams operate. Not excuses for being slow — the operating system that lets us take the right kind of risks in a regulated, trust-heavy product.</p>
         <div class="principle-grid">
-          <div class="princ-item"><b>Slow is smooth, smooth is fast</b><span>We optimise for not breaking what works. The cost of a regression is measured in firm trust, support load, and churn.</span></div>
-          <div class="princ-item"><b>Risk-managed experimentation</b><span>Every meaningful change ships behind rollout mechanics: staged exposure, firm-segment canaries, monitored success metrics, kill criteria.</span></div>
+          <div class="princ-item"><b>Slow is smooth, smooth is fast</b><span>We optimise for not breaking what works. The cost of a regression is measured in AO trust, support load, and churn.</span></div>
+          <div class="princ-item"><b>Risk-managed experimentation</b><span>Every meaningful change ships behind rollout mechanics: staged exposure, AO-segment canaries, monitored success metrics, kill criteria.</span></div>
           <div class="princ-item"><b>Conservative prioritisation</b><span>We say no more than we say yes. A long backlog is a feature of a mature product, not a bug.</span></div>
           <div class="princ-item"><b>Hierarchy serves quality</b><span>Design, engineering, compliance, and support have explicit sign-offs on customer-impacting changes.</span></div>
           <div class="princ-item"><b>Regulatory-grade rigor</b><span>Auditability, GDPR, local tax and bookkeeping rules are non-negotiable inputs. Compliance is part of the definition of done.</span></div>
-          <div class="princ-item"><b>Research grounded in the firm</b><span>We weight signal from the long tail of firms — small practices, sole practitioners, apprentices — not just the loudest or most sophisticated.</span></div>
+          <div class="princ-item"><b>Research grounded in the AO</b><span>We weight signal from the long tail of AOs — small practices, sole practitioners, apprentices — not just the loudest or most sophisticated.</span></div>
         </div>
       </div>
       <div class="step-pane" data-step="3">
         <p>How we measure whether we're succeeding — across trust, adoption, efficiency, quality, and inclusivity.</p>
         <ul>
           <li><b>Trust indicators:</b> NPS among partners and bookkeepers, retention, support contact rate, CSAT on AI-assisted interactions</li>
-          <li><b>Adoption depth:</b> % of JTBD steps where EVA suggestions are accepted; feature-level engagement per firm</li>
+          <li><b>Adoption depth:</b> % of JTBD steps where EVA suggestions are accepted; feature-level engagement per AO</li>
           <li><b>Efficiency gained:</b> time-per-client per JTBD (bank reconciled, supplier invoice booked, period closed)</li>
           <li><b>Quality:</b> correction rate on EVA suggestions, severity-weighted incident rate</li>
-          <li><b>Inclusivity:</b> accessibility audit scores; adoption parity across firm sizes and seniority levels</li>
+          <li><b>Inclusivity:</b> accessibility audit scores; adoption parity across AO sizes and seniority levels</li>
         </ul>
       </div>
       <div class="step-pane" data-step="4">
@@ -746,7 +998,7 @@
         <p><b>Timeline:</b> Continuous maintenance — this track compounds, it never ends.</p>
       </div>
       <div class="step-pane" data-step="5">
-        <p>How EVA as the Assistant shows up across the core jobs of the accounting office — augmenting every workflow without taking the bookkeeper out of the loop.</p>
+        <p>How EVA as the Operator shows up across the core jobs of the accounting office — orchestrating AI underneath a single entry point, without taking the bookkeeper out of the loop.</p>
         <div class="jtbd-list">
           <div class="jtbd-item"><b>Collect Documents</b><span>Chases clients, identifies missing docs, drafts the request</span></div>
           <div class="jtbd-item"><b>Supplier Invoices</b><span>Auto-capture, auto-code, match to PO; plain-language approval queue</span></div>
@@ -754,7 +1006,7 @@
           <div class="jtbd-item"><b>Advice About Anomalies</b><span>Flags in real time, drafts the client-facing message</span></div>
           <div class="jtbd-item"><b>Period Closing</b><span>EVA-driven close checklist, auto-reconciliation, one-click corrections</span></div>
           <div class="jtbd-item"><b>Business Advisory</b><span>Insight snippets, benchmarks, talking points inside the client view</span></div>
-          <div class="jtbd-item"><b>Prioritise Tasks</b><span>Firm-wide task board with EVA-ranked urgency</span></div>
+          <div class="jtbd-item"><b>Prioritise Tasks</b><span>AO-wide task board with EVA-ranked urgency</span></div>
           <div class="jtbd-item"><b>Overview & Control</b><span>Partner dashboards with EVA-written narratives</span></div>
           <div class="jtbd-item"><b>Handle Payroll</b><span>Assisted prep, anomaly flagging, compliance checks</span></div>
           <div class="jtbd-item"><b>Mobile</b><span>Mobile-first approval queues with EVA-summarised context</span></div>
@@ -771,7 +1023,7 @@
     <div class="modal-top">
       <div>
         <div class="modal-title-row"><span class="emoji">🤖</span><h3>Our agentic product with EVA as the Front Door</h3></div>
-        <div class="modal-sub">Track 2</div>
+        <div class="modal-sub">Stage 3 · AI is the platform</div>
       </div>
       <button class="modal-close" onclick="closeModal('modal-track2')"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l8 8M11 3l-8 8"/></svg></button>
     </div>
@@ -788,10 +1040,10 @@
         <p>The design principles governing how the Front Door, Skills, Artefacts, and Trust Layer show up to the accounting office.</p>
         <div class="principle-grid">
           <div class="princ-item"><b>Intent over interface</b><span>The primary input is intent — spoken, typed, uploaded, or implied. The UI is generated in service of that intent.</span></div>
-          <div class="princ-item"><b>Firm-scale thinking by default</b><span>EVA thinks across the entire client portfolio. "Reconcile all clients." "Close every VAT-ready client." Firm scale is the default scope.</span></div>
+          <div class="princ-item"><b>AO-scale thinking by default</b><span>EVA thinks across the entire client portfolio. "Reconcile all clients." "Close every VAT-ready client." Firm scale is the default scope.</span></div>
           <div class="princ-item"><b>Radical transparency of reasoning</b><span>Every action is traceable to the data, the rule, or the precedent that produced it. "Why did you do this?" is always one click away.</span></div>
-          <div class="princ-item"><b>Agency with accountability</b><span>Accountability lives with a named principal — the bookkeeper, the partner, the firm. Permissions and limits are first-class concepts.</span></div>
-          <div class="princ-item"><b>Composable agents, one EVA</b><span>Specialist agents cooperate behind the scenes. To the firm, it is always EVA. One voice, one memory, one identity.</span></div>
+          <div class="princ-item"><b>Agency with accountability</b><span>Accountability lives with a named principal — the bookkeeper, the partner, the AO. Permissions and limits are first-class concepts.</span></div>
+          <div class="princ-item"><b>Composable agents, one EVA</b><span>Specialist agents cooperate behind the scenes. To the AO, it is always EVA. One voice, one memory, one identity.</span></div>
         </div>
       </div>
       <div class="step-pane" data-step="1">
@@ -817,18 +1069,18 @@
           <div class="princ-item"><b>Experience before engineering</b><span>Every skill is an experience promise before it is a technical one. We define the UX artefact before engineering builds.</span></div>
           <div class="princ-item"><b>Ship to learn</b><span>Every release is an experiment. We are as proud of things we stop doing as of things we continue. Learning velocity is the primary KPI.</span></div>
           <div class="princ-item"><b>Reversible decisions fast</b><span>Most decisions in this track are reversible — treat them that way. Irreversible decisions get careful treatment.</span></div>
-          <div class="princ-item"><b>Design in the open — with real firms</b><span>Prototypes over specs. Live demos over decks. A rotating cohort of partner firms is in the build loop from week one.</span></div>
+          <div class="princ-item"><b>Design in the open — with real AOs</b><span>Prototypes over specs. Live demos over decks. A rotating cohort of partner AOs is in the build loop from week one.</span></div>
           <div class="princ-item"><b>Higher risk tolerance — on purpose</b><span>Bugs are acceptable in exchange for learning. Trust-breaking incidents are not. The line between the two is a team-level craft.</span></div>
         </div>
       </div>
       <div class="step-pane" data-step="3">
-        <p>How we measure learning, agent performance, trust under autonomy, and firm outcomes.</p>
+        <p>How we measure learning, agent performance, trust under autonomy, and AO outcomes.</p>
         <ul>
           <li><b>Learning velocity:</b> # of experiments, % producing directional learning</li>
           <li><b>Agent performance:</b> task success rate, autonomous completion rate, intervention rate — per JTBD</li>
           <li><b>Trust under autonomy:</b> correction rate vs. confidence level, calibration accuracy, incident-free hours of autonomous operation</li>
-          <li><b>Firm outcomes:</b> <b>clients-per-bookkeeper</b>, revenue-per-employee, partner NPS among opt-in firms</li>
-          <li><b>Expansion signal:</b> % of active firms choosing EVA-as-Front-Door over legacy surfaces when both are available</li>
+          <li><b>AO outcomes:</b> <b>clients-per-bookkeeper</b>, revenue-per-employee, partner NPS among opt-in AOs</li>
+          <li><b>Expansion signal:</b> % of active AOs choosing EVA-as-Front-Door over legacy surfaces when both are available</li>
         </ul>
       </div>
       <div class="step-pane" data-step="4">
@@ -843,16 +1095,16 @@
         <p><b>Timeline:</b> Kick off the agentic design system work by the <b>beginning of 2027</b>, with early patterns in the hands of agentic squads from day one.</p>
       </div>
       <div class="step-pane" data-step="5">
-        <p>How EVA as the Front Door reimagines the same accounting office jobs — operating at firm scale with autonomous execution, surfacing only what needs human attention.</p>
+        <p>How EVA as the Front Door reimagines the same accounting office jobs — operating at AO scale with autonomous execution, surfacing only what needs human attention.</p>
         <div class="jtbd-list">
           <div class="jtbd-item"><b>Collect Documents</b><span>Owns the pipeline across the book; bookkeeper sees only exceptions</span></div>
           <div class="jtbd-item"><b>Supplier Invoices</b><span>Runs accounts payable end-to-end; human approves exceptions only</span></div>
-          <div class="jtbd-item"><b>Handle Bank</b><span>Continuous, autonomous, firm-wide reconciliation</span></div>
-          <div class="jtbd-item"><b>Advice About Anomalies</b><span>Firm-wide risk radar; prepares advisory briefs on demand</span></div>
+          <div class="jtbd-item"><b>Handle Bank</b><span>Continuous, autonomous, AO-wide reconciliation</span></div>
+          <div class="jtbd-item"><b>Advice About Anomalies</b><span>AO-wide risk radar; prepares advisory briefs on demand</span></div>
           <div class="jtbd-item"><b>Period Closing</b><span>"Close March for every ready client." EVA packages for sign-off</span></div>
           <div class="jtbd-item"><b>Business Advisory</b><span>Drafts full advisory memos in the partner's voice</span></div>
-          <div class="jtbd-item"><b>Prioritise Tasks</b><span>Runs the firm's day — "what should my team work on this morning?"</span></div>
-          <div class="jtbd-item"><b>Overview & Control</b><span>Natural-language firm-level queries with evidence and source</span></div>
+          <div class="jtbd-item"><b>Prioritise Tasks</b><span>Runs the AO's day — "what should my team work on this morning?"</span></div>
+          <div class="jtbd-item"><b>Overview & Control</b><span>Natural-language AO-level queries with evidence and source</span></div>
           <div class="jtbd-item"><b>Handle Payroll</b><span>Runs monthly payroll across the book; surfaces exceptions only</span></div>
           <div class="jtbd-item"><b>Mobile</b><span>Voice-first — "approve anything below 10k EVA is confident on"</span></div>
           <div class="jtbd-item"><b>Trusted Platform</b><span>Cryptographically logged, explainable, audit-defensible autonomy</span></div>
@@ -883,7 +1135,7 @@
           <div class="princ-item"><b>Skill discovery & activation</b><span>How does a user enable, disable, or configure new skills? Marketplace, settings panel, or contextual suggestion?</span></div>
           <div class="princ-item"><b>Value tracking</b><span>How do we track outcomes and value realised per skill? Dashboard, notifications, or periodic reports?</span></div>
           <div class="princ-item"><b>Skill maturity</b><span>How do skills get promoted from experimental to trusted? Who decides, and what criteria apply?</span></div>
-          <div class="princ-item"><b>Permissions model</b><span>What's the permissioning model — per-user, per-firm, per-role? How granular should access control be?</span></div>
+          <div class="princ-item"><b>Permissions model</b><span>What's the permissioning model — per-user, per-AO, per-role? How granular should access control be?</span></div>
           <div class="princ-item"><b>Cross-track consistency</b><span>How do we ensure skills work the same whether surfaced through the Assistant or the Front Door?</span></div>
         </div>
       </div>
@@ -891,42 +1143,60 @@
   </div>
 </div>
 
-<!-- 8. Timeline -->
+<!-- 6. Timeline -->
 <section class="slide" data-title="Timeline">
   <span class="brand" aria-label="e-conomic"><svg viewBox="0 0 280 64" xmlns="http://www.w3.org/2000/svg" role="img"><g fill="#F5A524"><circle cx="22" cy="20" r="10"/><circle cx="10" cy="40" r="7"/><circle cx="36" cy="36" r="12"/><circle cx="24" cy="52" r="8"/><circle cx="50" cy="14" r="5.5"/><circle cx="54" cy="40" r="4.5"/></g><text x="70" y="46" font-family="Inter,system-ui,-apple-system,sans-serif" font-size="36" fill="#121530" font-weight="400" letter-spacing="-0.5">e·conomic</text></svg></span>
   <span class="pill">Product & design roadmap</span>
   <h1 class="title">EVA's evolution — aligned to the investment horizons</h1>
-  <p class="subtitle">This timeline complements the strategy's investment horizons (H1: Agent Skills as a Product, H2: Platform as a Product). It shows how EVA evolves from assistant to front door across both experiences.</p>
+  <p class="subtitle">The three convergence stages play out over time. This timeline maps them onto concrete years — <b>Stage 1 (scattered)</b> through 2026, <b>Stage 2 (centralised)</b> in 2027, <b>Stage 3 (platform)</b> from 2028 — and aligns with the strategy's horizons (H1: Agent Skills as a Product, H2: Platform as a Product).</p>
   <div class="content">
-    <div class="tl-bar"></div>
-    <div class="timeline">
-      <div class="tl-card">
-        <span class="tl-year">Now · 2026</span>
-        <h4>EVA is embedded</h4>
-        <p>Across every core workflow. EVA proposes, pre-fills, explains. Accuracy proven client by client.</p>
+    <div class="tl-wrapper">
+      <div class="tl-bg">
+        <svg viewBox="0 0 800 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,12 C200,10 400,4 600,2 L800,0 L800,200 L0,200 Z" fill="#2dd4a8"/>
+          <path d="M0,12 C100,14 200,22 300,38 C400,56 500,68 600,74 C700,78 750,79 800,80 L800,200 L0,200 Z" fill="#6C7AE0"/>
+          <path d="M0,12 C80,16 160,28 240,48 C320,70 400,96 480,124 C560,148 640,168 720,180 C760,186 780,190 800,192 L800,200 L0,200 Z" fill="#8B5FC7"/>
+        </svg>
       </div>
-      <div class="tl-card">
-        <span class="tl-year">End 2026</span>
-        <h4>EVA runs the repetitive work</h4>
-        <p>Routine postings are near-zero-touch. Bookkeepers approve exceptions only. Firm unit economics improve — we publish the numbers.</p>
+      <div class="tl-bar"></div>
+      <div class="timeline">
+        <div class="tl-card">
+          <span class="tl-year">Now · 2026</span>
+          <span class="tl-stage">Stage 1 · Scattered</span>
+          <h4>EVA is embedded</h4>
+          <p>Across every core workflow. EVA proposes, pre-fills, explains. Alongside Fin.ai, Financial Insights, Autosuggest, Praksis AI — each proving value in its own lane.</p>
+        </div>
+        <div class="tl-card">
+          <span class="tl-year">End 2026</span>
+          <span class="tl-stage">Stage 1 → 2 · Converging</span>
+          <h4>EVA runs the repetitive work</h4>
+          <p>Routine postings are near-zero-touch. The other AI streams start routing through EVA's surface instead of their own.</p>
+        </div>
+        <div class="tl-card">
+          <span class="tl-year">2027</span>
+          <span class="tl-stage">Stage 2 · Centralised</span>
+          <h4>EVA is the operator &amp; co-pilot</h4>
+          <p>EVA orchestrates every AI stream as a tool. Conversational practice-level surface in GA. Partners run the AO through EVA. Agentic DS in production.</p>
+        </div>
+        <div class="tl-card">
+          <span class="tl-year">2028</span>
+          <span class="tl-stage">Stage 3 · Platform</span>
+          <h4>EVA is the front door</h4>
+          <p>All automations packaged as APIs. For a fast-growing share of AOs, EVA <em>is</em> how they use e-conomic. Success measured in clients-per-bookkeeper.</p>
+        </div>
+        <div class="tl-card">
+          <span class="tl-year">2029+</span>
+          <span class="tl-stage">Stage 3 · New norm</span>
+          <h4>The new norm</h4>
+          <p>5–10× client throughput vs. 2025. e-conomic defines the category for agentic accounting.</p>
+        </div>
       </div>
-      <div class="tl-card">
-        <span class="tl-year">2027</span>
-        <h4>EVA is the co-pilot</h4>
-        <p>Conversational practice-level surface in GA. Partners run the firm through EVA. Agentic DS in production.</p>
-      </div>
-      <div class="tl-card">
-        <span class="tl-year">2028</span>
-        <h4>EVA is the front door</h4>
-        <p>For a fast-growing share of firms, EVA <em>is</em> how they use e-conomic. Success measured in clients-per-bookkeeper.</p>
-      </div>
-      <div class="tl-card">
-        <span class="tl-year">2029+</span>
-        <h4>The new norm</h4>
-        <p>5–10× client throughput vs. 2025. e-conomic defines the category for agentic accounting.</p>
+      <div class="adoption-legend">
+        <span class="leg-c">Legacy</span>
+        <span class="leg-b">Hybrid</span>
+        <span class="leg-a">Agentic</span>
       </div>
     </div>
-    <div class="impact"><b>Our bet</b>Commit to a first fully-agentic reference firm. Make public, dated commitments. Reward shipping.</div>
   </div>
 </section>
 
@@ -951,7 +1221,7 @@
       <li>What's EVA's personality — and does it flex across tracks and segments?</li>
       <li>What's the minimum verification surface that makes autonomy feel safe?</li>
       <li>Who owns the design-system-as-product function?</li>
-      <li>Who is the <em>first</em> firm we commit to taking fully agentic, and when?</li>
+      <li>Who is the <em>first</em> AO we commit to taking fully agentic, and when?</li>
     </ul>
   </div>
 </section>
@@ -1014,7 +1284,7 @@
           </div>
           <div class="blur-reason">
             <div class="blur-reason-icon">🧩</div>
-            <div><b>Context is lost at every boundary</b><p>The person who talked to the firm should be the one sketching the solution. Every translation layer loses signal.</p></div>
+            <div><b>Context is lost at every boundary</b><p>The person who talked to the AO should be the one sketching the solution. Every translation layer loses signal.</p></div>
           </div>
           <div class="blur-reason">
             <div class="blur-reason-icon">🤖</div>
@@ -1044,7 +1314,7 @@
         <h3>Product Strategist</h3>
         <p class="role-tagline">Setting direction</p>
         <div class="role-body">
-          <p>Driving the strategy and setting direction across both tracks. The strategist owns the "what" and "why" — translating firm needs, market signals, and company ambition into a coherent product direction.</p>
+          <p>Driving the strategy and setting direction across both tracks. The strategist owns the "what" and "why" — translating AO needs, market signals, and company ambition into a coherent product direction.</p>
           <div class="role-details">
             <div class="role-detail"><b>Owns</b><span>Product vision, roadmap priorities, track-level OKRs, strategic bets</span></div>
             <div class="role-detail"><b>Works with</b><span>Leadership, product builders, commercial, customer success</span></div>
@@ -1060,8 +1330,8 @@
           <p>The F-shaped product person who closes the gap between design, PM, and engineering. Runs discovery, builds AI prototypes, and delivers solutions — end to end, in both tracks.</p>
           <div class="role-details">
             <div class="role-detail"><b>Owns</b><span>Discovery, AI prototyping, solution delivery, experience quality</span></div>
-            <div class="role-detail"><b>Works with</b><span>Engineers, strategists, AI enablers, firms (directly)</span></div>
-            <div class="role-detail"><b>Key output</b><span>Shipped product that solves a real JTBD — tested with real firms</span></div>
+            <div class="role-detail"><b>Works with</b><span>Engineers, strategists, AI enablers, AOs (directly)</span></div>
+            <div class="role-detail"><b>Key output</b><span>Shipped product that solves a real JTBD — tested with real AOs</span></div>
           </div>
         </div>
       </div>
@@ -1195,7 +1465,7 @@
         <p class="upskill-lead">Build shared literacy and start breaking down silos.</p>
         <div class="upskill-items">
           <div class="upskill-item"><b>AI literacy programme</b><span>Every PM and UXer completes a hands-on intro to LLMs, prompt engineering, and AI-assisted design. Not theory — applied to our product.</span></div>
-          <div class="upskill-item"><b>Prototyping with LLMs</b><span>Intro sessions on building quick AI prototypes. Every participant builds and tests at least one prototype with a real firm scenario.</span></div>
+          <div class="upskill-item"><b>Prototyping with LLMs</b><span>Intro sessions on building quick AI prototypes. Every participant builds and tests at least one prototype with a real AO scenario.</span></div>
           <div class="upskill-item"><b>Role profile drafts</b><span>Product Strategist, Product Builder, and AI & Platform Enabler profiles are drafted, shared, and iterated with the team.</span></div>
         </div>
       </div>
